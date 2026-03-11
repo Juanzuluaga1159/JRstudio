@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JR Studio | Marketing Digital & Community Management</title>
+  <meta
+    name="description"
+    content="JR Studio impulsa negocios con branding, community management, marketing digital y diseño web con una estética premium y estratégica."
+  />
+  <meta name="theme-color" content="#0F0F11" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root{
+      --deep-blue:#07073B;
+      --black:#0F0F11;
+      --cream:#E7E3E0;
+      --taupe:#A69E95;
+      --brown:#4F4C47;
+      --pure:#000000;
+
+      --bg:var(--black);
+      --bg-soft:#151518;
+      --bg-card:rgba(255,255,255,.04);
+      --line:rgba(231,227,224,.10);
+      --line-strong:rgba(231,227,224,.16);
+
+      --text:var(--cream);
+      --muted:var(--taupe);
+      --accent:var(--deep-blue);
+
+      --shadow-lg:0 20px 60px rgba(0,0,0,.35);
+      --shadow-md:0 10px 30px rgba(0,0,0,.25);
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:14px;
+
+      --container:1200px;
+      --nav-h:84px;
+      --ease:cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Lato",sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(7,7,59,.45), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(166,158,149,.08), transparent 18%),
+        radial-gradient(circle at 70% 80%, rgba(7,7,59,.25), transparent 24%),
+        linear-gradient(180deg, #0F0F11 0%, #101014 50%, #0B0B0D 100%);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input,
+    textarea{
+      font:inherit;
+    }
+
+    .container{
+      width:min(92%, var(--container));
+      margin-inline:auto;
+    }
+
+    .section{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .section-title{
+      font-family:"Montserrat",sans-serif;
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1.05;
+      font-weight:800;
+      letter-spacing:-0.04em;
+      margin-bottom:18px;
+    }
+
+    .section-subtitle{
+      max-width:700px;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
+      font-family:"Montserrat",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      color:var(--taupe);
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:linear-gradient(90deg, var(--taupe), transparent);
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .glass{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-md);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:opacity .8s var(--ease), transform .8s var(--ease);
+    }
+
+    .reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* NAV */
+    .nav{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      height:var(--nav-h);
+      display:flex;
+      align-items:center;
+      transition:background .35s ease, border-color .35s ease, box-shadow .35s ease;
+      border-bottom:1px solid transparent;
+    }
+
+    .nav.scrolled{
+      background:rgba(15,15,17,.78);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-color:var(--line);
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .nav-inner{
+      width:min(92%, var(--container));
+      margin-inline:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:max-content;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-family:"Montserrat",sans-serif;
+      font-weight:800;
+      font-size:.95rem;
+      color:var(--cream);
+      background:
+        linear-gradient(135deg, rgba(231,227,224,.12), rgba(7,7,59,.7)),
+        var(--black);
+      border:1px solid rgba(231,227,224,.14);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    .brand-text{
+      font-family:"Montserrat",sans-serif;
+      font-weight:700;
+      font-size:1rem;
+      letter-spacing:.02em;
+    }
+
+    .brand-text span{
+      color:var(--muted);
+      font-weight:500;
+      display:block;
+      font-size:.72rem;
+      margin-top:1px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .nav-links a{
+      font-family:"Montserrat",sans-serif;
+      font-size:.93rem;
+      color:var(--taupe);
+      position:relative;
+      transition:color .25s ease;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-7px;
+      width:100%;
+      height:1px;
+      background:linear-gradient(90deg, var(--cream), transparent);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .3s var(--ease);
+    }
+
+    .nav-links a:hover{
+      color:var(--cream);
+    }
+
+    .nav-links a:hover::after{
+      transform:scaleX(1);
+    }
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid var(--line-strong);
+      color:var(--cream);
+      font-family:"Montserrat",sans-serif;
+      font-size:.9rem;
+      font-weight:600;
+      transition:transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .nav-cta:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.04);
+      border-color:rgba(231,227,224,.25);
+    }
+
+    .menu-toggle{
+      display:none;
+      width:46px;
+      height:46px;
+      border:none;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      color:var(--cream);
+      cursor:pointer;
+    }
+
+    .menu-toggle svg{
+      width:22px;
+      height:22px;
+    }
+
+    .mobile-panel{
+      position:fixed;
+      top:calc(var(--nav-h) + 10px);
+      left:4%;
+      right:4%;
+      z-index:999;
+      border-radius:24px;
+      padding:18px;
+      background:rgba(15,15,17,.96);
+      border:1px solid var(--line);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:var(--shadow-lg);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(-10px);
+      transition:all .3s ease;
+    }
+
+    .mobile-panel.open{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+    }
+
+    .mobile-panel a{
+      display:block;
+      padding:14px 10px;
+      color:var(--cream);
+      border-bottom:1px solid rgba(255,255,255,.05);
+      font-family:"Montserrat",sans-serif;
+    }
+
+    .mobile-panel a:last-child{
+      border-bottom:none;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:140px 0 90px;
+      overflow:hidden;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:999px;
+      filter:blur(60px);
+      pointer-events:none;
+    }
+
+    .hero::before{
+      width:380px;
+      height:380px;
+      background:rgba(7,7,59,.55);
+      top:40px;
+      right:-60px;
+    }
+
+    .hero::after{
+      width:280px;
+      height:280px;
+      background:rgba(166,158,149,.12);
+      bottom:80px;
+      left:-80px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:42px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-copy{
+      max-width:720px;
+    }
+
+    .hero h1{
+      font-family:"Montserrat",sans-serif;
+      font-size:clamp(2.7rem, 6vw, 5.4rem);
+      line-height:.98;
+      letter-spacing:-0.06em;
+      font-weight:800;
+      margin-bottom:22px;
+    }
+
+    .hero h1 .accent{
+      color:var(--taupe);
+    }
+
+    .hero p{
+      max-width:620px;
+      font-size:1.12rem;
+      color:var(--muted);
+      margin-bottom:34px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:34px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-family:"Montserrat",sans-serif;
+      font-size:.95rem;
+      font-weight:700;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--cream), #ffffff);
+      color:var(--black);
+      box-shadow:0 10px 30px rgba(231,227,224,.12);
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 16px 36px rgba(231,227,224,.16);
+    }
+
+    .btn-secondary{
+      color:var(--cream);
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.03);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.06);
+      border-color:rgba(231,227,224,.26);
+    }
+
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:14px;
+      max-width:720px;
+    }
+
+    .stat{
+      padding:18px 18px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong{
+      display:block;
+      font-family:"Montserrat",sans-serif;
+      font-size:1.2rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .hero-visual{
+      position:relative;
+      min-height:540px;
+    }
+
+    .hero-card{
+      position:absolute;
+      border-radius:28px;
+      padding:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow:var(--shadow-lg);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+    }
+
+    .hero-card.main{
+      inset:72px 0 60px 40px;
+      overflow:hidden;
+    }
+
+    .hero-card.mini.top{
+      width:210px;
+      top:0;
+      right:20px;
+    }
+
+    .hero-card.mini.bottom{
+      width:220px;
+      bottom:0;
+      left:0;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-family:"Montserrat",sans-serif;
+      font-size:.78rem;
+      color:var(--cream);
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      margin-bottom:18px;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--cream), var(--taupe));
+      box-shadow:0 0 16px rgba(231,227,224,.35);
+    }
+
+    .visual-panel{
+      height:100%;
+      border-radius:22px;
+      padding:22px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(231,227,224,.08), transparent 18%),
+        radial-gradient(circle at 80% 30%, rgba(7,7,59,.55), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.06);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .visual-panel h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1.55rem;
+      line-height:1.12;
+      max-width:280px;
+    }
+
+    .visual-lines{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .line{
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+
+    .line::after{
+      content:"";
+      display:block;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--cream), var(--taupe), rgba(7,7,59,.9));
+    }
+
+    .line:nth-child(1)::after{width:90%;}
+    .line:nth-child(2)::after{width:72%;}
+    .line:nth-child(3)::after{width:56%;}
+    .line:nth-child(4)::after{width:82%;}
+
+    .mini h4{
+      font-family:"Montserrat",sans-serif;
+      font-size:1rem;
+      margin-bottom:10px;
+    }
+
+    .mini p{
+      color:var(--muted);
+      font-size:.92rem;
+      margin:0;
+    }
+
+    .mini-list{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .mini-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--taupe);
+      font-size:.9rem;
+    }
+
+    .mini-item::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--cream);
+      opacity:.85;
+    }
+
+    /* ABOUT */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+      align-items:stretch;
+      margin-top:44px;
+    }
+
+    .about-card{
+      padding:34px;
+      border-radius:26px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .about-card p{
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:58ch;
+    }
+
+    .about-list{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+      margin-top:26px;
+    }
+
+    .about-list div{
+      padding:16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      font-family:"Montserrat",sans-serif;
+      font-size:.95rem;
+      font-weight:600;
+    }
+
+    .about-panel{
+      padding:34px;
+      border-radius:26px;
+      display:grid;
+      gap:18px;
+    }
+
+    .about-feature{
+      padding:18px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .about-feature h4{
+      font-family:"Montserrat",sans-serif;
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .about-feature p{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* SERVICES */
+    .services-head{
+      margin-bottom:42px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .service-card{
+      position:relative;
+      padding:28px;
+      border-radius:24px;
+      overflow:hidden;
+      transition:transform .3s var(--ease), border-color .3s ease, background .3s ease;
+      min-height:250px;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(231,227,224,.18);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+
+    .service-card::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:999px;
+      right:-70px;
+      top:-70px;
+      background:radial-gradient(circle, rgba(7,7,59,.55), transparent 60%);
+      pointer-events:none;
+    }
+
+    .service-icon{
+      width:56px;
+      height:56px;
+      display:grid;
+      place-items:center;
+      border-radius:18px;
+      margin-bottom:18px;
+      background:linear-gradient(135deg, rgba(231,227,224,.10), rgba(7,7,59,.7));
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .service-icon svg{
+      width:26px;
+      height:26px;
+      stroke:var(--cream);
+    }
+
+    .service-card h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1.18rem;
+      line-height:1.2;
+      margin-bottom:12px;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      font-size:.98rem;
+      margin-bottom:14px;
+    }
+
+    .service-card ul{
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+
+    .service-card li{
+      color:#d0cbc7;
+      font-size:.92rem;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .service-card li::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--taupe);
+      margin-top:.5em;
+      flex:none;
+    }
+
+    /* PRICING */
+    .pricing-wrap{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .price-card{
+      position:relative;
+      padding:32px;
+      border-radius:28px;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      transition:transform .3s var(--ease), border-color .3s ease;
+    }
+
+    .price-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(231,227,224,.2);
+    }
+
+    .price-card.featured{
+      background:
+        radial-gradient(circle at top right, rgba(7,7,59,.65), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(231,227,224,.18);
+      transform:translateY(-10px);
+    }
+
+    .plan-label{
+      display:inline-flex;
+      align-self:flex-start;
+      padding:8px 12px;
+      margin-bottom:16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--cream);
+      font-family:"Montserrat",sans-serif;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .price-card h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1.7rem;
+      margin-bottom:10px;
+    }
+
+    .price-card p{
+      color:var(--muted);
+      margin-bottom:22px;
+    }
+
+    .price-list{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-bottom:28px;
+      flex:1;
+    }
+
+    .price-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:#d6d1cd;
+      font-size:.96rem;
+    }
+
+    .price-list li::before{
+      content:"✓";
+      color:var(--cream);
+      font-weight:700;
+      font-family:"Montserrat",sans-serif;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-grid{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .portfolio-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      min-height:360px;
+      padding:22px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,.02)),
+        #111114;
+      transition:transform .35s var(--ease), border-color .35s ease;
+    }
+
+    .portfolio-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(231,227,224,.18);
+    }
+
+    .portfolio-image{
+      height:100%;
+      min-height:316px;
+      border-radius:20px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(7,7,59,.15), rgba(15,15,17,.25)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+    }
+
+    .portfolio-card:nth-child(2) .portfolio-image{
+      background:
+        linear-gradient(180deg, rgba(7,7,59,.15), rgba(15,15,17,.25)),
+        url("https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+    }
+
+    .portfolio-card:nth-child(3) .portfolio-image{
+      background:
+        linear-gradient(180deg, rgba(7,7,59,.15), rgba(15,15,17,.25)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+    }
+
+    .portfolio-overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      padding:18px;
+      border-radius:18px;
+      background:rgba(15,15,17,.75);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .portfolio-overlay h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1.05rem;
+      margin-bottom:6px;
+    }
+
+    .portfolio-overlay p{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    /* CTA */
+    .cta-box{
+      position:relative;
+      border-radius:34px;
+      overflow:hidden;
+      padding:54px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(231,227,224,.06), transparent 14%),
+        radial-gradient(circle at 80% 20%, rgba(7,7,59,.70), transparent 30%),
+        linear-gradient(135deg, #121216 0%, #0F0F11 55%, #07073B 130%);
+      border:1px solid rgba(231,227,224,.10);
+      box-shadow:var(--shadow-lg);
+    }
+
+    .cta-box h2{
+      font-family:"Montserrat",sans-serif;
+      font-size:clamp(2rem, 4vw, 3.4rem);
+      line-height:1;
+      letter-spacing:-0.05em;
+      margin-bottom:16px;
+      max-width:760px;
+    }
+
+    .cta-box p{
+      max-width:650px;
+      color:var(--muted);
+      margin-bottom:28px;
+      font-size:1.05rem;
+    }
+
+    /* CONTACT */
+    .contact-wrap{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:24px;
+    }
+
+    .contact-card,
+    .form-card{
+      padding:32px;
+      border-radius:26px;
+    }
+
+    .contact-card h3,
+    .form-card h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1.45rem;
+      margin-bottom:14px;
+    }
+
+    .contact-card > p,
+    .form-card > p{
+      color:var(--muted);
+      margin-bottom:22px;
+    }
+
+    .contact-items{
+      display:grid;
+      gap:14px;
+      margin-top:20px;
+    }
+
+    .contact-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .contact-item svg{
+      width:20px;
+      height:20px;
+      stroke:var(--cream);
+      flex:none;
+      margin-top:2px;
+    }
+
+    .contact-item strong{
+      display:block;
+      font-family:"Montserrat",sans-serif;
+      margin-bottom:3px;
+      font-size:.96rem;
+    }
+
+    .contact-item span,
+    .contact-item a{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .field{
+      display:grid;
+      gap:8px;
+    }
+
+    .field label{
+      font-family:"Montserrat",sans-serif;
+      font-size:.86rem;
+      color:#d7d2ce;
+    }
+
+    .field input,
+    .field textarea{
+      width:100%;
+      border:none;
+      outline:none;
+      padding:16px 16px;
+      border-radius:16px;
+      color:var(--cream);
+      background:#141418;
+      border:1px solid rgba(255,255,255,.07);
+      transition:border-color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus{
+      border-color:rgba(231,227,224,.24);
+      background:#17171c;
+    }
+
+    .field textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    .form-note{
+      margin-top:14px;
+      color:var(--taupe);
+      font-size:.9rem;
+    }
+
+    /* FOOTER */
+    .footer{
+      padding:36px 0 46px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background:rgba(0,0,0,.12);
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr .8fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .footer-brand p{
+      color:var(--muted);
+      max-width:420px;
+      margin-top:12px;
+    }
+
+    .footer h4{
+      font-family:"Montserrat",sans-serif;
+      font-size:1rem;
+      margin-bottom:14px;
+    }
+
+    .footer-links,
+    .footer-socials{
+      display:grid;
+      gap:10px;
+    }
+
+    .footer-links a,
+    .footer-socials a{
+      color:var(--taupe);
+      transition:color .25s ease, transform .25s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-socials a:hover{
+      color:var(--cream);
+      transform:translateX(3px);
+    }
+
+    .footer-bottom{
+      margin-top:30px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.05);
+      color:var(--brown);
+      font-size:.95rem;
+    }
+
+    /* FLOATING GRAIN */
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.045;
+      background-image:
+        radial-gradient(circle at 25% 25%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, #fff 1px, transparent 1px);
+      background-size:22px 22px, 28px 28px;
+      z-index:1;
+      mix-blend-mode:soft-light;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px){
+      .hero-grid,
+      .about-grid,
+      .contact-wrap,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .services-grid,
+      .pricing-wrap,
+      .portfolio-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .hero-visual{
+        min-height:500px;
+        max-width:760px;
+      }
+    }
+
+    @media (max-width: 820px){
+      :root{
+        --nav-h:76px;
+      }
+
+      .nav-links,
+      .nav-cta{
+        display:none;
+      }
+
+      .menu-toggle{
+        display:grid;
+        place-items:center;
+      }
+
+      .hero{
+        min-height:auto;
+        padding-top:120px;
+      }
+
+      .hero-stats{
+        grid-template-columns:1fr;
+      }
+
+      .hero-visual{
+        min-height:470px;
+      }
+
+      .hero-card.main{
+        inset:72px 0 56px 0;
+      }
+
+      .hero-card.mini.top{
+        right:0;
+      }
+
+      .hero-card.mini.bottom{
+        left:0;
+      }
+
+      .services-grid,
+      .pricing-wrap,
+      .portfolio-grid,
+      .about-list,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cta-box{
+        padding:34px 24px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .section{
+        padding:86px 0;
+      }
+
+      .hero h1{
+        font-size:clamp(2.3rem, 11vw, 4rem);
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-visual{
+        min-height:430px;
+      }
+
+      .hero-card{
+        padding:18px;
+      }
+
+      .hero-card.mini.top{
+        width:170px;
+      }
+
+      .hero-card.mini.bottom{
+        width:180px;
+      }
+
+      .about-card,
+      .about-panel,
+      .contact-card,
+      .form-card,
+      .price-card{
+        padding:24px;
+      }
+
+      .portfolio-card{
+        min-height:320px;
+      }
+
+      .portfolio-image{
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand" aria-label="JR Studio inicio">
+        <div class="brand-mark">JR</div>
+        <div class="brand-text">
+          JR Studio
+          <span>Marketing Digital</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#planes">Planes</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="nav-cta" href="#contacto">Trabajemos juntos</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M4 7h16"></path>
+          <path d="M4 12h16"></path>
+          <path d="M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#planes">Planes</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">Agencia creativa & estratégica</div>
+            <h1>
+              Tu negocio ya existe,
+              <span class="accent">ahora hagamos que tenga marca</span>
+            </h1>
+            <p>
+              En JR Studio combinamos branding, marketing digital, community management y diseño web
+              para transformar presencia online en una marca sólida, elegante y memorable.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#servicios" class="btn btn-primary">Ver servicios</a>
+              <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat glass">
+                <strong>Branding</strong>
+                <span>Identidad visual clara, estratégica y coherente.</span>
+              </div>
+              <div class="stat glass">
+                <strong>Contenido</strong>
+                <span>Calendarios, piezas y copies con intención.</span>
+              </div>
+              <div class="stat glass">
+                <strong>Crecimiento</strong>
+                <span>Gestión digital pensada para resultados reales.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-card mini top">
+              <div class="badge"><span class="dot"></span> Presencia digital</div>
+              <h4>Imagen profesional</h4>
+              <p>Una estética cuidada comunica valor antes de vender.</p>
+            </div>
+
+            <div class="hero-card main">
+              <div class="visual-panel">
+                <div>
+                  <div class="badge"><span class="dot"></span> JR Studio</div>
+                  <h3>Diseñamos marcas que se ven tan bien como comunican.</h3>
+                  <div class="visual-lines">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                  </div>
+                </div>
+
+                <div class="mini-list">
+                  <div class="mini-item">Branding con identidad sólida</div>
+                  <div class="mini-item">Contenido alineado a objetivos</div>
+                  <div class="mini-item">Sitios web con estética premium</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-card mini bottom">
+              <div class="badge"><span class="dot"></span> Estrategia</div>
+              <h4>Más que publicar</h4>
+              <p>Construimos percepción, posicionamiento y confianza de marca.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Sobre nosotros</div>
+          <h2 class="section-title">Sobre JR Studio</h2>
+          <p class="section-subtitle">
+            JR Studio acompaña a negocios que necesitan verse mejor, comunicar mejor y crecer con una
+            identidad de marca más profesional. Trabajamos desde la estrategia hasta la ejecución visual
+            para crear una presencia digital consistente y atractiva.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass reveal">
+            <p>
+              Desarrollamos soluciones enfocadas en <strong>marketing digital</strong>,
+              <strong>community management</strong>, <strong>branding</strong> y
+              <strong>web design</strong>, con una estética minimalista, elegante y orientada a elevar
+              la percepción de cada negocio.
+            </p>
+
+            <div class="about-list">
+              <div>Marketing digital</div>
+              <div>Community management</div>
+              <div>Branding estratégico</div>
+              <div>Diseño y desarrollo web</div>
+            </div>
+          </div>
+
+          <div class="about-panel glass reveal">
+            <div class="about-feature">
+              <h4>Visión de marca</h4>
+              <p>Definimos una imagen coherente para que cada punto de contacto sume valor.</p>
+            </div>
+            <div class="about-feature">
+              <h4>Comunicación estratégica</h4>
+              <p>Convertimos contenidos y redes sociales en herramientas de posicionamiento.</p>
+            </div>
+            <div class="about-feature">
+              <h4>Experiencia visual</h4>
+              <p>Construimos una estética premium, clara y adaptable a todos los dispositivos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="services-head reveal">
+          <div class="eyebrow">Servicios</div>
+          <h2 class="section-title">Servicios pensados para marcas que quieren crecer</h2>
+          <p class="section-subtitle">
+            Cada servicio está diseñado para fortalecer la presencia digital, mejorar la percepción de marca
+            y generar una comunicación más profesional y efectiva.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19V5"></path>
+                <path d="M10 19V9"></path>
+                <path d="M16 19v-6"></path>
+                <path d="M22 19V3"></path>
+              </svg>
+            </div>
+            <h3>Branding e identidad de marca</h3>
+            <p>Construimos la base visual y conceptual de tu negocio para que se vea sólido, reconocible y profesional.</p>
+            <ul>
+              <li>Creación y definición visual de la marca</li>
+              <li>Logo, tipografías, colores y estilo</li>
+              <li>Manual de marca</li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                <path d="M8 20h8"></path>
+                <path d="M12 18v2"></path>
+              </svg>
+            </div>
+            <h3>Diseño y desarrollo web</h3>
+            <p>Sitios visualmente atractivos, funcionales y optimizados para transmitir valor desde el primer vistazo.</p>
+            <ul>
+              <li>Diseño personalizado</li>
+              <li>Experiencia de usuario optimizada</li>
+              <li>Adaptación a dispositivos móviles</li>
+              <li>Integración con redes y contacto</li>
+              <li>Asesoramiento en hosting y puesta online</li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19h16"></path>
+                <path d="M6 16l4-4 3 2 5-6"></path>
+                <path d="M18 10h2v2"></path>
+              </svg>
+            </div>
+            <h3>Estrategia y planificación de contenido</h3>
+            <p>Organizamos ideas, formatos y objetivos para que el contenido tenga intención y continuidad.</p>
+            <ul>
+              <li>Estrategia básica o avanzada de contenido</li>
+              <li>Calendario mensual</li>
+              <li>Planificación por objetivos</li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 10a5 5 0 1 1 10 0c0 5-5 8-5 8s-5-3-5-8Z"></path>
+                <circle cx="12" cy="10" r="2"></circle>
+              </svg>
+            </div>
+            <h3>Gestión y crecimiento de redes sociales</h3>
+            <p>Administramos redes con foco en consistencia visual, tono de comunicación y crecimiento sostenido.</p>
+            <ul>
+              <li>Gestión profesional del perfil</li>
+              <li>Publicación y seguimiento</li>
+              <li>Optimización de presencia en Instagram</li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h18"></path>
+                <path d="M12 3v18"></path>
+                <circle cx="12" cy="12" r="9"></circle>
+              </svg>
+            </div>
+            <h3>Publicidad digital</h3>
+            <p>Diseñamos campañas para llegar al público correcto y optimizar la inversión en medios pagos.</p>
+            <ul>
+              <li>Meta Ads y Google Ads</li>
+              <li>Segmentación estratégica</li>
+              <li>Optimización de anuncios</li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17l5-5 4 4 7-8"></path>
+                <path d="M20 8v5h-5"></path>
+              </svg>
+            </div>
+            <h3>Análisis de métricas y optimización</h3>
+            <p>Medimos el rendimiento para tomar decisiones más inteligentes y mejorar lo que realmente importa.</p>
+            <ul>
+              <li>Revisión mensual de métricas</li>
+              <li>Detección de oportunidades</li>
+              <li>Ajuste continuo de estrategia</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="planes">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Planes mensuales</div>
+          <h2 class="section-title">Packs diseñados para cada etapa de crecimiento</h2>
+          <p class="section-subtitle">
+            Desde una base estratégica hasta una gestión integral con publicidad digital, elegí el pack que mejor se adapte a tu negocio.
+          </p>
+        </div>
+
+        <div class="pricing-wrap">
+          <article class="price-card glass reveal">
+            <span class="plan-label">Pack 1</span>
+            <h3>Base estratégica</h3>
+            <p>Ideal para negocios que necesitan orden, dirección y una base de contenido clara.</p>
+            <ul class="price-list">
+              <li>Estrategia básica de contenido</li>
+              <li>Calendario de contenidos mensual</li>
+            </ul>
+            <a href="#contacto" class="btn btn-secondary">Consultar pack</a>
+          </article>
+
+          <article class="price-card featured reveal">
+            <span class="plan-label">Pack 2</span>
+            <h3>Gestión de marca</h3>
+            <p>Una opción más completa para sostener presencia visual, frecuencia y coherencia en Instagram.</p>
+            <ul class="price-list">
+              <li>Todo lo del Pack 1</li>
+              <li>8 posteos (reels, carrusel o imagen)</li>
+              <li>20 historias</li>
+              <li>Diseño de piezas</li>
+              <li>Redacción de copy</li>
+              <li>Publicación del contenido</li>
+              <li>Optimización del perfil de Instagram</li>
+              <li>Análisis de métricas mensual</li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary">Elegir pack</a>
+          </article>
+
+          <article class="price-card glass reveal">
+            <span class="plan-label">Pack 3</span>
+            <h3>Crecimiento + Ads</h3>
+            <p>Para marcas que quieren combinar contenido orgánico con campañas publicitarias estratégicas.</p>
+            <ul class="price-list">
+              <li>Todo lo del Pack 2</li>
+              <li>Gestión de campañas publicitarias</li>
+              <li>Publicidad en Instagram y Facebook</li>
+              <li>Segmentación de público</li>
+              <li>Optimización de anuncios</li>
+            </ul>
+            <a href="#contacto" class="btn btn-secondary">Consultar pack</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Portfolio / resultados</div>
+          <h2 class="section-title">Algunas áreas donde tu marca puede destacar</h2>
+          <p class="section-subtitle">
+            Este espacio puede reemplazarse luego por proyectos reales, capturas de redes, branding y piezas de contenido creadas por JR Studio.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card reveal">
+            <div class="portfolio-image">
+              <div class="portfolio-overlay">
+                <h3>Redes sociales gestionadas</h3>
+                <p>Feeds, historias y estrategia visual con identidad consistente.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card reveal">
+            <div class="portfolio-image">
+              <div class="portfolio-overlay">
+                <h3>Diseños de contenido</h3>
+                <p>Piezas gráficas, carruseles y contenido pensado para comunicar mejor.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card reveal">
+            <div class="portfolio-image">
+              <div class="portfolio-overlay">
+                <h3>Branding projects</h3>
+                <p>Identidades de marca con estilo, coherencia y proyección profesional.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div class="eyebrow">Call to action</div>
+          <h2>Transformemos tu negocio en una marca.</h2>
+          <p>
+            Si buscas una presencia digital más estratégica, elegante y profesional, JR Studio puede ayudarte a construirla.
+          </p>
+          <a href="#contacto" class="btn btn-primary">Trabajemos juntos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Contacto</div>
+          <h2 class="section-title">Hablemos de tu próxima etapa</h2>
+          <p class="section-subtitle">
+            Cuéntanos sobre tu negocio, tus objetivos y el tipo de presencia digital que te gustaría construir.
+          </p>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="contact-card glass reveal">
+            <h3>Información de contacto</h3>
+            <p>Estos datos son editables y puedes reemplazarlos luego por los definitivos.</p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 6h16v12H4z"></path>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:contacto@jrstudio.com">contacto@jrstudio.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3.09a2 2 0 0 1 2 1.72c.12.91.33 1.8.63 2.66a2 2 0 0 1-.45 2.11L8.07 9.93a16 16 0 0 0 6 6l1.44-1.29a2 2 0 0 1 2.11-.45c.86.3 1.75.51 2.66.63A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <div>
+                  <strong>Teléfono</strong>
+                  <span>+54 11 0000 0000</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <path d="M17.5 6.5h.01"></path>
+                </svg>
+                <div>
+                  <strong>Instagram</strong>
+                  <span>@jrstudio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card glass reveal">
+            <h3>Envíanos tu mensaje</h3>
+            <p>Completa el formulario y luego podrás conectarlo con tu email o backend cuando quieras.</p>
+
+            <form id="contactForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="tuemail@empresa.com" required />
+                </div>
+
+                <div class="field full">
+                  <label for="empresa">Empresa</label>
+                  <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" />
+                </div>
+
+                <div class="field full">
+                  <label for="mensaje">Mensaje</label>
+                  <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+              <p class="form-note" id="formMessage">Formulario de demostración listo para integrar.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="brand" aria-label="JR Studio">
+            <div class="brand-mark">JR</div>
+            <div class="brand-text">
+              JR Studio
+              <span>Marketing Digital</span>
+            </div>
+          </a>
+          <p>
+            Branding, community management, marketing digital y diseño web con una estética minimalista, estratégica y profesional.
+          </p>
+        </div>
+
+        <div>
+          <h4>Navegación</h4>
+          <div class="footer-links">
+            <a href="#sobre">Sobre nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#planes">Planes</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Redes</h4>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Behance">Behance</a>
+            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 JR Studio – Marketing Digital
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const menuToggle = document.getElementById("menuToggle");
+    const mobilePanel = document.getElementById("mobilePanel");
+    const mobileLinks = mobilePanel.querySelectorAll("a");
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    function handleNavbar(){
+      if(window.scrollY > 20){
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    handleNavbar();
+    window.addEventListener("scroll", handleNavbar);
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobilePanel.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobilePanel.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const clickedInsideMenu = mobilePanel.contains(event.target);
+      const clickedToggle = menuToggle.contains(event.target);
+
+      if(!clickedInsideMenu && !clickedToggle){
+        mobilePanel.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const nombre = form.nombre.value.trim();
+      const email = form.email.value.trim();
+      const mensaje = form.mensaje.value.trim();
+
+      if(!nombre || !email || !mensaje){
+        formMessage.textContent = "Por favor completa los campos obligatorios.";
+        formMessage.style.color = "#ffb4b4";
+        return;
+      }
+
+      formMessage.textContent = "Mensaje listo. Luego puedes conectar este formulario con EmailJS, Formspree o tu backend.";
+      formMessage.style.color = "#E7E3E0";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
