@@ -173,7 +173,6 @@
       mix-blend-mode:multiply;
     }
 
-    /* NAV */
     .nav{
       position:fixed;
       inset:0 0 auto 0;
@@ -358,7 +357,6 @@
       border-bottom:none;
     }
 
-    /* HERO */
     .hero{
       position:relative;
       min-height:100vh;
@@ -517,43 +515,40 @@
     }
 
     .hero-visual{
-      position:relative;
-      min-height:560px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      align-items:start;
+      max-width:520px;
+      margin-left:auto;
     }
 
-    .hero-card{
-      position:absolute;
-      border-radius:30px;
-      padding:24px;
+    .hero-main-card{
+      padding:28px;
+      border-radius:32px;
+      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
       border:1px solid rgba(15,15,17,.06);
-      background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
       box-shadow:var(--shadow-lg);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-      transition:transform .45s var(--ease), border-color .35s ease, box-shadow .35s ease;
     }
 
-    .hero-card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(7,7,59,.12);
-      box-shadow:0 26px 56px rgba(15,15,17,.12);
+    .hero-top-chip{
+      justify-self:end;
+      padding:16px 18px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.74));
+      border:1px solid rgba(15,15,17,.06);
+      box-shadow:var(--shadow-sm);
+      min-width:210px;
     }
 
-    .hero-card.main{
-      inset:68px 0 60px 30px;
-      overflow:hidden;
-    }
-
-    .hero-card.mini.top{
-      width:214px;
-      top:0;
-      right:18px;
-    }
-
-    .hero-card.mini.bottom{
-      width:226px;
-      bottom:0;
-      left:0;
+    .hero-bottom-card{
+      max-width:280px;
+      padding:22px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.76));
+      border:1px solid rgba(15,15,17,.06);
+      box-shadow:var(--shadow-md);
+      margin-top:-6px;
     }
 
     .badge{
@@ -578,97 +573,90 @@
       box-shadow:0 0 12px rgba(7,7,59,.16);
     }
 
-    .visual-panel{
-      height:100%;
-      padding:24px;
-      border-radius:24px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(7,7,59,.04), transparent 18%),
-        radial-gradient(circle at 78% 28%, rgba(166,158,149,.18), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.52));
-      border:1px solid rgba(15,15,17,.05);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .visual-panel h3{
+    .hero-main-card h3{
       font-family:"Montserrat",sans-serif;
-      font-size:1.56rem;
-      line-height:1.14;
-      max-width:320px;
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.02;
+      letter-spacing:-0.05em;
+      max-width:420px;
       color:var(--black);
+      margin-bottom:26px;
+      text-wrap:balance;
     }
 
-    .visual-lines{
+    .hero-bars{
       display:grid;
-      gap:12px;
-      margin-top:20px;
+      gap:14px;
+      margin-bottom:22px;
     }
 
-    .line{
-      height:10px;
+    .hero-bar{
+      height:12px;
       border-radius:999px;
       background:rgba(7,7,59,.08);
       overflow:hidden;
+      position:relative;
     }
 
-    .line::after{
+    .hero-bar::after{
       content:"";
-      display:block;
+      position:absolute;
+      inset:0 auto 0 0;
       height:100%;
       border-radius:999px;
-      background:linear-gradient(90deg, rgba(7,7,59,.92), rgba(166,158,149,.75), rgba(7,7,59,.42));
-      animation:lineFloat 7s ease-in-out infinite alternate;
+      background:linear-gradient(90deg, #1a165a 0%, #6b688e 55%, #b2ada6 100%);
+      animation:barShift 8s ease-in-out infinite alternate;
     }
 
-    .line:nth-child(1)::after{width:88%;}
-    .line:nth-child(2)::after{width:70%;}
-    .line:nth-child(3)::after{width:55%;}
-    .line:nth-child(4)::after{width:80%;}
+    .hero-bar:nth-child(1)::after{ width:90%; }
+    .hero-bar:nth-child(2)::after{ width:72%; }
+    .hero-bar:nth-child(3)::after{ width:58%; }
+    .hero-bar:nth-child(4)::after{ width:82%; }
 
-    @keyframes lineFloat{
-      0%{transform:translateX(0);}
-      100%{transform:translateX(10px);}
+    @keyframes barShift{
+      0%{ transform:translateX(0); }
+      100%{ transform:translateX(8px); }
     }
 
-    .hero-card h4{
-      font-family:"Montserrat",sans-serif;
-      font-size:1rem;
-      margin-bottom:8px;
-      color:var(--black);
-    }
-
-    .hero-card p{
-      color:var(--muted);
-      font-size:.92rem;
-      margin:0;
-    }
-
-    .mini-list{
+    .hero-points{
       display:grid;
       gap:10px;
-      margin-top:16px;
     }
 
-    .mini-item{
+    .hero-point{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       gap:10px;
       color:var(--muted-soft);
-      font-size:.92rem;
+      font-size:.95rem;
     }
 
-    .mini-item::before{
+    .hero-point::before{
       content:"";
       width:8px;
       height:8px;
       border-radius:999px;
       background:var(--deep-blue);
-      opacity:.85;
+      margin-top:.52em;
+      flex:none;
     }
 
-    /* ABOUT */
+    .hero-top-chip p,
+    .hero-bottom-card p{
+      color:var(--muted);
+      font-size:.95rem;
+      margin:0;
+    }
+
+    .hero-top-chip h4,
+    .hero-bottom-card h4{
+      font-family:"Montserrat",sans-serif;
+      font-size:1rem;
+      line-height:1.2;
+      color:var(--black);
+      margin-bottom:8px;
+    }
+
     .about-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -745,7 +733,6 @@
       font-size:.95rem;
     }
 
-    /* SERVICES */
     .services-head{
       margin-bottom:40px;
     }
@@ -844,7 +831,6 @@
       flex:none;
     }
 
-    /* PRICING */
     .pricing-wrap{
       margin-top:40px;
       display:grid;
@@ -931,7 +917,6 @@
       color:var(--deep-blue);
     }
 
-    /* PORTFOLIO */
     .portfolio-grid{
       margin-top:40px;
       display:grid;
@@ -1010,7 +995,6 @@
       font-size:.92rem;
     }
 
-    /* CTA */
     .cta-box{
       position:relative;
       overflow:hidden;
@@ -1055,7 +1039,6 @@
       box-shadow:0 12px 24px rgba(0,0,0,.18);
     }
 
-    /* CONTACT */
     .contact-wrap{
       margin-top:40px;
       display:grid;
@@ -1186,7 +1169,6 @@
       font-size:.9rem;
     }
 
-    /* FOOTER */
     .footer{
       padding:40px 0 46px;
       border-top:1px solid rgba(15,15,17,.06);
@@ -1241,16 +1223,6 @@
       font-size:.95rem;
     }
 
-    /* FLOAT */
-    @keyframes floaty{
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-8px);}
-    }
-
-    .hero-card.mini.top{ animation:floaty 7s ease-in-out infinite; }
-    .hero-card.mini.bottom{ animation:floaty 8s ease-in-out infinite reverse; }
-
-    /* RESPONSIVE */
     @media (max-width:1080px){
       .hero-grid,
       .about-grid,
@@ -1266,8 +1238,8 @@
       }
 
       .hero-visual{
-        min-height:500px;
-        max-width:760px;
+        max-width:640px;
+        margin-left:0;
       }
     }
 
@@ -1294,19 +1266,29 @@
       }
 
       .hero-visual{
-        min-height:470px;
+        max-width:100%;
+        gap:14px;
       }
 
-      .hero-card.main{
-        inset:72px 0 56px 0;
+      .hero-main-card{
+        padding:22px;
+        border-radius:26px;
       }
 
-      .hero-card.mini.top{
-        right:0;
+      .hero-main-card h3{
+        font-size:clamp(1.8rem, 8vw, 2.7rem);
+        max-width:100%;
       }
 
-      .hero-card.mini.bottom{
-        left:0;
+      .hero-top-chip{
+        justify-self:start;
+        min-width:auto;
+        width:fit-content;
+      }
+
+      .hero-bottom-card{
+        max-width:100%;
+        margin-top:0;
       }
 
       .services-grid,
@@ -1339,20 +1321,10 @@
         width:100%;
       }
 
-      .hero-visual{
-        min-height:430px;
-      }
-
-      .hero-card{
+      .hero-main-card,
+      .hero-top-chip,
+      .hero-bottom-card{
         padding:18px;
-      }
-
-      .hero-card.mini.top{
-        width:170px;
-      }
-
-      .hero-card.mini.bottom{
-        width:182px;
       }
 
       .about-card,
@@ -1443,7 +1415,7 @@
 
             <div class="hero-actions">
               <a href="#servicios" class="btn btn-primary">Ver servicios</a>
-              <a href="#contacto" class="btn btn-secondary">Contactar</a>
+              <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Contactar</a>
             </div>
 
             <div class="hero-stats">
@@ -1463,34 +1435,30 @@
           </div>
 
           <div class="hero-visual reveal">
-            <div class="hero-card mini top">
+            <div class="hero-top-chip">
               <div class="badge"><span class="dot"></span> Presencia digital</div>
-              <h4>Imagen profesional</h4>
               <p>Una estética cuidada comunica valor antes de vender.</p>
             </div>
 
-            <div class="hero-card main">
-              <div class="visual-panel">
-                <div>
-                  <div class="badge"><span class="dot"></span> JR Studio</div>
-                  <h3>Diseñamos marcas que se ven tan bien como comunican.</h3>
-                  <div class="visual-lines">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                  </div>
-                </div>
+            <div class="hero-main-card">
+              <div class="badge"><span class="dot"></span> JR Studio</div>
+              <h3>Diseñamos marcas que se ven tan bien como comunican.</h3>
 
-                <div class="mini-list">
-                  <div class="mini-item">Branding con identidad sólida</div>
-                  <div class="mini-item">Contenido alineado a objetivos</div>
-                  <div class="mini-item">Sitios web con estética premium</div>
-                </div>
+              <div class="hero-bars">
+                <div class="hero-bar"></div>
+                <div class="hero-bar"></div>
+                <div class="hero-bar"></div>
+                <div class="hero-bar"></div>
+              </div>
+
+              <div class="hero-points">
+                <div class="hero-point">Branding con identidad sólida</div>
+                <div class="hero-point">Contenido alineado a objetivos</div>
+                <div class="hero-point">Sitios web con estética premium</div>
               </div>
             </div>
 
-            <div class="hero-card mini bottom">
+            <div class="hero-bottom-card">
               <div class="badge"><span class="dot"></span> Estrategia</div>
               <h4>Más que publicar</h4>
               <p>Construimos percepción, posicionamiento y confianza de marca.</p>
@@ -1684,7 +1652,7 @@
               <li>Estrategia básica de contenido</li>
               <li>Calendario de contenidos mensual</li>
             </ul>
-            <a href="#contacto" class="btn btn-secondary">Consultar pack</a>
+            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Consultar pack</a>
           </article>
 
           <article class="price-card featured reveal">
@@ -1701,7 +1669,7 @@
               <li>Optimización del perfil de Instagram</li>
               <li>Análisis de métricas mensual</li>
             </ul>
-            <a href="#contacto" class="btn btn-primary">Elegir pack</a>
+            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Elegir pack</a>
           </article>
 
           <article class="price-card reveal">
@@ -1715,7 +1683,7 @@
               <li>Segmentación de público</li>
               <li>Optimización de anuncios</li>
             </ul>
-            <a href="#contacto" class="btn btn-secondary">Consultar pack</a>
+            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Consultar pack</a>
           </article>
         </div>
       </div>
@@ -1828,7 +1796,7 @@
 
           <div class="form-card glass reveal">
             <h3>Envíanos tu mensaje</h3>
-            <p>Completa el formulario y luego podrás conectarlo con tu email o backend cuando quieras.</p>
+            <p>Completa el formulario y nos pondremos en contacto contigo.</p>
 
             <form id="contactForm">
               <div class="form-grid">
@@ -1854,7 +1822,7 @@
               </div>
 
               <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-              <p class="form-note" id="formMessage">Formulario de demostración listo para integrar.</p>
+              <p class="form-note" id="formMessage">Completa el formulario para enviarnos tu consulta.</p>
             </form>
           </div>
         </div>
@@ -1905,75 +1873,104 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <script>
-    const navbar = document.getElementById("navbar");
-    const menuToggle = document.getElementById("menuToggle");
-    const mobilePanel = document.getElementById("mobilePanel");
-    const mobileLinks = mobilePanel.querySelectorAll("a");
-    const form = document.getElementById("contactForm");
-    const formMessage = document.getElementById("formMessage");
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.getElementById("navbar");
+      const menuToggle = document.getElementById("menuToggle");
+      const mobilePanel = document.getElementById("mobilePanel");
+      const mobileLinks = mobilePanel.querySelectorAll("a");
+      const form = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
 
-    function handleNavbar(){
-      if(window.scrollY > 20){
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
+      function handleNavbar() {
+        if (window.scrollY > 20) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
       }
-    }
 
-    handleNavbar();
-    window.addEventListener("scroll", handleNavbar);
+      handleNavbar();
+      window.addEventListener("scroll", handleNavbar);
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mobilePanel.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        mobilePanel.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mobilePanel.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
       });
-    });
 
-    document.addEventListener("click", (event) => {
-      const clickedInsideMenu = mobilePanel.contains(event.target);
-      const clickedToggle = menuToggle.contains(event.target);
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobilePanel.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        });
+      });
 
-      if(!clickedInsideMenu && !clickedToggle){
-        mobilePanel.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
-    });
+      document.addEventListener("click", (event) => {
+        const clickedInsideMenu = mobilePanel.contains(event.target);
+        const clickedToggle = menuToggle.contains(event.target);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+        if (!clickedInsideMenu && !clickedToggle) {
+          mobilePanel.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
         }
       });
-    }, { threshold: 0.12 });
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-      const nombre = form.nombre.value.trim();
-      const email = form.email.value.trim();
-      const mensaje = form.mensaje.value.trim();
+      emailjs.init({
+        publicKey: "Pil6OZV5Fu-D-prpU"
+      });
 
-      if(!nombre || !email || !mensaje){
-        formMessage.textContent = "Por favor completa los campos obligatorios.";
-        formMessage.style.color = "#c44b4b";
-        return;
-      }
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-      formMessage.textContent = "Mensaje listo. Luego puedes conectar este formulario con EmailJS, Formspree o tu backend.";
-      formMessage.style.color = "#07073B";
-      form.reset();
+        const submitButton = form.querySelector('button[type="submit"]');
+        const params = {
+          nombre: document.getElementById("nombre").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          empresa: document.getElementById("empresa").value.trim(),
+          mensaje: document.getElementById("mensaje").value.trim()
+        };
+
+        if (!params.nombre || !params.email || !params.mensaje) {
+          formMessage.textContent = "Por favor completa los campos obligatorios.";
+          formMessage.style.color = "#c44b4b";
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando...";
+        formMessage.textContent = "Enviando mensaje...";
+        formMessage.style.color = "#07073B";
+
+        try {
+          await emailjs.send("service_jrstudio", "template_s1abe0b", params);
+          formMessage.textContent = "✅ Mensaje enviado correctamente";
+          formMessage.style.color = "#1f7a1f";
+          form.reset();
+        } catch (error) {
+          console.error("Error EmailJS:", error);
+          formMessage.textContent = "❌ Error al enviar el mensaje. Revisa la consola.";
+          formMessage.style.color = "#c44b4b";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = "Enviar mensaje";
+        }
+      });
     });
   </script>
+</body>
+</html>
 </body>
 </html>
