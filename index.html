@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet"
   />
 
@@ -22,33 +22,33 @@
       --deep-blue:#07073B;
       --black:#0F0F11;
       --cream:#E7E3E0;
+      --cream-2:#F3EFEB;
       --taupe:#A69E95;
       --brown:#4F4C47;
-      --pure:#000000;
+      --white:#FFFFFF;
 
       --bg:#E7E3E0;
       --bg-soft:#F4F1EE;
-      --bg-card:rgba(255,255,255,.82);
       --line:rgba(15,15,17,.08);
       --line-strong:rgba(15,15,17,.14);
 
       --text:#0F0F11;
       --muted:#4F4C47;
-      --muted-soft:#6e675f;
+      --muted-soft:#6f6962;
       --accent:#07073B;
       --accent-soft:rgba(7,7,59,.08);
 
-      --shadow-lg:0 24px 60px rgba(15,15,17,.10);
-      --shadow-md:0 12px 30px rgba(15,15,17,.08);
-      --shadow-sm:0 8px 18px rgba(15,15,17,.05);
+      --shadow-lg:0 26px 70px rgba(15,15,17,.12);
+      --shadow-md:0 16px 38px rgba(15,15,17,.10);
+      --shadow-sm:0 10px 24px rgba(15,15,17,.07);
 
       --radius-xl:34px;
       --radius-lg:28px;
       --radius-md:22px;
       --radius-sm:16px;
 
-      --container:1180px;
-      --nav-h:84px;
+      --container:1220px;
+      --nav-h:82px;
       --ease:cubic-bezier(.22,.61,.36,1);
     }
 
@@ -64,16 +64,16 @@
 
     body{
       font-family:"Lato",sans-serif;
-      background:
-        radial-gradient(circle at 8% 10%, rgba(7,7,59,.08), transparent 24%),
-        radial-gradient(circle at 92% 14%, rgba(166,158,149,.18), transparent 22%),
-        radial-gradient(circle at 75% 82%, rgba(7,7,59,.06), transparent 18%),
-        linear-gradient(180deg, #F7F3F0 0%, #EDE7E2 48%, #E7E3E0 100%);
       color:var(--text);
+      background:var(--bg);
       line-height:1.65;
       overflow-x:hidden;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
+    }
+
+    body.menu-open{
+      overflow:hidden;
     }
 
     img{
@@ -101,24 +101,37 @@
 
     .section{
       position:relative;
-      padding:100px 0;
+      padding:110px 0;
+    }
+
+    .section-dark{
+      background:#09090d;
+      color:#fff;
     }
 
     .section-title{
       font-family:"Montserrat",sans-serif;
-      font-size:clamp(2rem, 4vw, 3rem);
-      line-height:1.08;
-      font-weight:800;
-      letter-spacing:-0.04em;
-      margin-bottom:16px;
-      color:var(--black);
+      font-size:clamp(2.2rem, 5vw, 4.8rem);
+      line-height:.95;
+      font-weight:900;
+      letter-spacing:-0.07em;
+      text-transform:uppercase;
       text-wrap:balance;
     }
 
-    .section-subtitle{
-      max-width:720px;
+    .section-title.light{
+      color:#fff;
+    }
+
+    .section-copy{
       color:var(--muted);
-      font-size:1.05rem;
+      font-size:1.02rem;
+      max-width:720px;
+      margin-top:18px;
+    }
+
+    .section-copy.light{
+      color:rgba(231,227,224,.76);
     }
 
     .eyebrow{
@@ -128,9 +141,9 @@
       margin-bottom:16px;
       font-family:"Montserrat",sans-serif;
       font-size:.78rem;
-      font-weight:700;
+      font-weight:800;
       text-transform:uppercase;
-      letter-spacing:.14em;
+      letter-spacing:.16em;
       color:var(--deep-blue);
     }
 
@@ -141,17 +154,17 @@
       background:linear-gradient(90deg, var(--deep-blue), transparent);
     }
 
-    .glass{
-      background:linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.68));
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      border:1px solid rgba(15,15,17,.06);
-      box-shadow:var(--shadow-md);
+    .eyebrow.light{
+      color:#d8d2cc;
+    }
+
+    .eyebrow.light::before{
+      background:linear-gradient(90deg, #d8d2cc, transparent);
     }
 
     .reveal{
       opacity:0;
-      transform:translateY(24px);
+      transform:translateY(26px);
       transition:opacity .9s var(--ease), transform .9s var(--ease);
     }
 
@@ -164,7 +177,7 @@
       position:fixed;
       inset:0;
       pointer-events:none;
-      opacity:.018;
+      opacity:.02;
       background-image:
         radial-gradient(circle at 20% 20%, #000 1px, transparent 1px),
         radial-gradient(circle at 70% 70%, #000 1px, transparent 1px);
@@ -185,9 +198,9 @@
     }
 
     .nav.scrolled{
-      background:rgba(247,243,240,.82);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
+      background:rgba(231,227,224,.78);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
       border-color:rgba(15,15,17,.06);
       box-shadow:0 8px 24px rgba(15,15,17,.06);
     }
@@ -204,43 +217,45 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
       min-width:max-content;
     }
 
     .brand-mark{
-      width:46px;
-      height:46px;
-      border-radius:16px;
+      width:48px;
+      height:48px;
+      border-radius:14px;
       display:grid;
       place-items:center;
       font-family:"Montserrat",sans-serif;
-      font-weight:800;
+      font-weight:900;
       font-size:.95rem;
       color:var(--cream);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.18), rgba(7,7,59,.88)),
-        var(--black);
-      border:1px solid rgba(7,7,59,.08);
+      background:linear-gradient(135deg, var(--deep-blue), #16165b);
       box-shadow:var(--shadow-sm);
     }
 
     .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+
+    .brand-text strong{
       font-family:"Montserrat",sans-serif;
-      font-weight:700;
       font-size:1rem;
-      letter-spacing:.01em;
-      color:var(--black);
+      font-weight:800;
+      letter-spacing:-0.03em;
     }
 
     .brand-text span{
-      display:block;
-      margin-top:2px;
-      font-size:.72rem;
-      font-weight:600;
-      letter-spacing:.1em;
+      font-family:"Montserrat",sans-serif;
+      font-size:.66rem;
+      font-weight:700;
       text-transform:uppercase;
+      letter-spacing:.18em;
       color:var(--muted);
+      margin-top:5px;
     }
 
     .nav-links{
@@ -252,7 +267,10 @@
     .nav-links a{
       position:relative;
       font-family:"Montserrat",sans-serif;
-      font-size:.92rem;
+      font-size:.84rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
       color:var(--muted);
       transition:color .25s ease;
     }
@@ -261,10 +279,10 @@
       content:"";
       position:absolute;
       left:0;
-      bottom:-7px;
+      bottom:-8px;
       width:100%;
       height:1px;
-      background:linear-gradient(90deg, var(--deep-blue), transparent);
+      background:var(--deep-blue);
       transform:scaleX(0);
       transform-origin:left;
       transition:transform .28s var(--ease);
@@ -285,20 +303,19 @@
       min-height:46px;
       padding:0 18px;
       border-radius:999px;
-      border:1px solid rgba(7,7,59,.14);
-      color:var(--deep-blue);
-      background:rgba(255,255,255,.54);
+      background:var(--black);
+      color:#fff;
       font-family:"Montserrat",sans-serif;
-      font-size:.9rem;
-      font-weight:700;
-      transition:transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+      font-size:.84rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      transition:transform .25s ease, background .25s ease;
     }
 
     .nav-cta:hover{
       transform:translateY(-2px);
       background:var(--deep-blue);
-      color:#fff;
-      border-color:var(--deep-blue);
     }
 
     .menu-toggle{
@@ -306,8 +323,8 @@
       width:46px;
       height:46px;
       border:none;
-      border-radius:16px;
-      background:rgba(255,255,255,.62);
+      border-radius:14px;
+      background:rgba(255,255,255,.56);
       border:1px solid rgba(15,15,17,.08);
       color:var(--deep-blue);
       cursor:pointer;
@@ -321,16 +338,14 @@
 
     .mobile-panel{
       position:fixed;
-      top:calc(var(--nav-h) + 10px);
+      top:calc(var(--nav-h) + 8px);
       left:4%;
       right:4%;
       z-index:999;
       border-radius:24px;
-      padding:14px;
-      background:rgba(255,255,255,.94);
+      padding:16px;
+      background:rgba(255,255,255,.95);
       border:1px solid rgba(15,15,17,.08);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
       box-shadow:var(--shadow-lg);
       opacity:0;
       visibility:hidden;
@@ -347,10 +362,12 @@
     .mobile-panel a{
       display:block;
       padding:14px 10px;
-      color:var(--black);
       border-bottom:1px solid rgba(15,15,17,.06);
       font-family:"Montserrat",sans-serif;
-      font-weight:600;
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:.84rem;
+      letter-spacing:.1em;
     }
 
     .mobile-panel a:last-child{
@@ -362,54 +379,105 @@
       min-height:100vh;
       display:flex;
       align-items:center;
-      padding:140px 0 90px;
+      padding:130px 0 42px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(7,7,59,.09), transparent 22%),
+        radial-gradient(circle at 80% 15%, rgba(166,158,149,.18), transparent 24%),
+        linear-gradient(180deg, #F7F3F0 0%, #EFEAE5 52%, #E7E3E0 100%);
       overflow:hidden;
     }
 
-    .hero::before,
-    .hero::after{
+    .hero::before{
       content:"";
       position:absolute;
-      border-radius:999px;
-      filter:blur(80px);
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), transparent 20%),
+        linear-gradient(90deg, rgba(255,255,255,.08), transparent 40%);
       pointer-events:none;
-    }
-
-    .hero::before{
-      width:360px;
-      height:360px;
-      top:40px;
-      right:-50px;
-      background:rgba(7,7,59,.10);
-    }
-
-    .hero::after{
-      width:260px;
-      height:260px;
-      bottom:60px;
-      left:-40px;
-      background:rgba(166,158,149,.16);
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:42px;
-      align-items:center;
+      grid-template-columns:1.04fr .96fr;
+      gap:36px;
+      align-items:end;
+    }
+
+    .hero-media{
+      position:relative;
+      min-height:620px;
+      border-radius:38px;
+      overflow:hidden;
+      box-shadow:var(--shadow-lg);
+      background:
+        linear-gradient(180deg, rgba(15,15,17,.18), rgba(15,15,17,.06)),
+        url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+    }
+
+    .hero-media::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:40%;
+      background:linear-gradient(180deg, transparent, rgba(15,15,17,.32));
+    }
+
+    .hero-floating{
+      position:absolute;
+      left:24px;
+      bottom:24px;
+      z-index:2;
+      max-width:290px;
+      padding:18px 18px 16px;
+      border-radius:22px;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.5);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      box-shadow:var(--shadow-md);
+    }
+
+    .hero-floating small{
+      display:block;
+      font-family:"Montserrat",sans-serif;
+      font-size:.7rem;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--deep-blue);
+      margin-bottom:8px;
+    }
+
+    .hero-floating p{
+      margin:0;
+      font-size:.93rem;
+      color:var(--muted);
     }
 
     .hero-copy{
-      max-width:720px;
+      position:relative;
+      padding:26px 0 26px 8px;
+    }
+
+    .script-line{
+      display:block;
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      font-size:clamp(1.1rem, 2vw, 1.55rem);
+      color:var(--brown);
+      margin-bottom:12px;
     }
 
     .hero h1{
       font-family:"Montserrat",sans-serif;
-      font-size:clamp(2.8rem, 6vw, 5.2rem);
-      line-height:1;
-      letter-spacing:-0.06em;
-      font-weight:800;
-      margin-bottom:22px;
+      font-size:clamp(3rem, 7vw, 6.2rem);
+      line-height:.88;
+      letter-spacing:-0.08em;
+      font-weight:900;
+      text-transform:uppercase;
       color:var(--black);
+      margin-bottom:18px;
       text-wrap:balance;
     }
 
@@ -417,18 +485,31 @@
       color:var(--deep-blue);
     }
 
-    .hero p{
-      max-width:620px;
-      font-size:1.08rem;
+    .hero-copy p{
+      max-width:560px;
+      font-size:1.04rem;
       color:var(--muted);
-      margin-bottom:32px;
+      margin-bottom:28px;
+    }
+
+    .hero-mini-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 16px;
+      margin-bottom:28px;
+      color:var(--muted-soft);
+      font-size:.86rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-family:"Montserrat",sans-serif;
+      font-weight:700;
     }
 
     .hero-actions{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
-      margin-bottom:32px;
+      margin-bottom:36px;
     }
 
     .btn{
@@ -441,15 +522,17 @@
       border-radius:999px;
       border:1px solid transparent;
       font-family:"Montserrat",sans-serif;
-      font-size:.95rem;
-      font-weight:700;
+      font-size:.88rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      cursor:pointer;
       transition:
         transform .25s ease,
         box-shadow .25s ease,
         background .25s ease,
-        border-color .25s ease,
-        color .25s ease;
-      cursor:pointer;
+        color .25s ease,
+        border-color .25s ease;
     }
 
     .btn:hover{
@@ -458,17 +541,17 @@
 
     .btn-primary{
       color:#fff;
-      background:linear-gradient(135deg, var(--deep-blue), #10106c);
+      background:linear-gradient(135deg, var(--black), var(--deep-blue));
       box-shadow:0 12px 28px rgba(7,7,59,.18);
     }
 
     .btn-primary:hover{
-      box-shadow:0 16px 30px rgba(7,7,59,.24);
+      box-shadow:0 16px 34px rgba(7,7,59,.24);
     }
 
     .btn-secondary{
       color:var(--deep-blue);
-      background:rgba(255,255,255,.66);
+      background:rgba(255,255,255,.62);
       border-color:rgba(7,7,59,.14);
       box-shadow:var(--shadow-sm);
     }
@@ -478,637 +561,618 @@
       border-color:rgba(7,7,59,.22);
     }
 
-    .hero-stats{
+    .hero-bottom-grid{
       display:grid;
       grid-template-columns:repeat(3, minmax(0,1fr));
       gap:14px;
-      max-width:720px;
+      max-width:650px;
     }
 
-    .stat{
+    .hero-stat{
       padding:18px;
-      border-radius:22px;
-      background:rgba(255,255,255,.74);
-      border:1px solid rgba(15,15,17,.06);
-      box-shadow:var(--shadow-sm);
-      transition:transform .3s ease, border-color .3s ease, background .3s ease, box-shadow .3s ease;
+      border-top:1px solid rgba(15,15,17,.14);
     }
 
-    .stat:hover{
-      transform:translateY(-4px);
-      background:#fff;
-      border-color:rgba(7,7,59,.10);
-      box-shadow:var(--shadow-md);
-    }
-
-    .stat strong{
+    .hero-stat strong{
       display:block;
       font-family:"Montserrat",sans-serif;
-      font-size:1.08rem;
+      font-size:1.05rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:-0.04em;
       margin-bottom:6px;
       color:var(--black);
     }
 
-    .stat span{
+    .hero-stat span{
       color:var(--muted);
-      font-size:.93rem;
+      font-size:.94rem;
     }
 
-    .hero-visual{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-      align-items:start;
-      max-width:520px;
-      margin-left:auto;
-    }
-
-    .hero-main-card{
-      padding:28px;
-      border-radius:32px;
-      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
-      border:1px solid rgba(15,15,17,.06);
-      box-shadow:var(--shadow-lg);
-    }
-
-    .hero-top-chip{
-      justify-self:end;
-      padding:16px 18px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.74));
-      border:1px solid rgba(15,15,17,.06);
-      box-shadow:var(--shadow-sm);
-      min-width:210px;
-    }
-
-    .hero-bottom-card{
-      max-width:280px;
-      padding:22px;
-      border-radius:28px;
-      background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.76));
-      border:1px solid rgba(15,15,17,.06);
-      box-shadow:var(--shadow-md);
-      margin-top:-6px;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      margin-bottom:18px;
-      font-family:"Montserrat",sans-serif;
-      font-size:.78rem;
-      color:var(--deep-blue);
-      background:rgba(7,7,59,.06);
-      border:1px solid rgba(7,7,59,.08);
-    }
-
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:linear-gradient(135deg, var(--deep-blue), var(--taupe));
-      box-shadow:0 0 12px rgba(7,7,59,.16);
-    }
-
-    .hero-main-card h3{
-      font-family:"Montserrat",sans-serif;
-      font-size:clamp(2rem, 4vw, 3rem);
-      line-height:1.02;
-      letter-spacing:-0.05em;
-      max-width:420px;
-      color:var(--black);
-      margin-bottom:26px;
-      text-wrap:balance;
-    }
-
-    .hero-bars{
-      display:grid;
-      gap:14px;
-      margin-bottom:22px;
-    }
-
-    .hero-bar{
-      height:12px;
-      border-radius:999px;
-      background:rgba(7,7,59,.08);
-      overflow:hidden;
+    .ticker{
       position:relative;
+      overflow:hidden;
+      border-top:1px solid rgba(15,15,17,.08);
+      border-bottom:1px solid rgba(15,15,17,.08);
+      background:#f4efea;
+      white-space:nowrap;
     }
 
-    .hero-bar::after{
+    .ticker-track{
+      display:flex;
+      width:max-content;
+      animation:tickerMove 24s linear infinite;
+    }
+
+    .ticker-item{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:16px 22px;
+      font-family:"Montserrat",sans-serif;
+      font-weight:800;
+      font-size:.88rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--black);
+    }
+
+    .ticker-item::after{
+      content:"✦";
+      color:var(--deep-blue);
+      opacity:.85;
+    }
+
+    @keyframes tickerMove{
+      0%{ transform:translateX(0); }
+      100%{ transform:translateX(-50%); }
+    }
+
+    .services-showcase{
+      position:relative;
+      min-height:720px;
+      display:flex;
+      align-items:center;
+      background:
+        linear-gradient(180deg, rgba(15,15,17,.08), rgba(15,15,17,.18)),
+        url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      overflow:hidden;
+    }
+
+    .services-showcase::before{
       content:"";
       position:absolute;
-      inset:0 auto 0 0;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg, #1a165a 0%, #6b688e 55%, #b2ada6 100%);
-      animation:barShift 8s ease-in-out infinite alternate;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.05), transparent 30%),
+        linear-gradient(180deg, rgba(231,227,224,.14), rgba(15,15,17,.35));
     }
 
-    .hero-bar:nth-child(1)::after{ width:90%; }
-    .hero-bar:nth-child(2)::after{ width:72%; }
-    .hero-bar:nth-child(3)::after{ width:58%; }
-    .hero-bar:nth-child(4)::after{ width:82%; }
-
-    @keyframes barShift{
-      0%{ transform:translateX(0); }
-      100%{ transform:translateX(8px); }
+    .services-card{
+      position:relative;
+      max-width:760px;
+      margin:0 auto;
+      padding:46px 40px;
+      border-radius:32px;
+      background:rgba(243,239,235,.92);
+      box-shadow:var(--shadow-lg);
+      border:1px solid rgba(15,15,17,.06);
+      text-align:center;
     }
 
-    .hero-points{
-      display:grid;
-      gap:10px;
+    .services-card .section-title{
+      margin-inline:auto;
+      max-width:560px;
     }
 
-    .hero-point{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      color:var(--muted-soft);
-      font-size:.95rem;
-    }
-
-    .hero-point::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:var(--deep-blue);
-      margin-top:.52em;
-      flex:none;
-    }
-
-    .hero-top-chip p,
-    .hero-bottom-card p{
-      color:var(--muted);
-      font-size:.95rem;
-      margin:0;
-    }
-
-    .hero-top-chip h4,
-    .hero-bottom-card h4{
-      font-family:"Montserrat",sans-serif;
-      font-size:1rem;
-      line-height:1.2;
-      color:var(--black);
-      margin-bottom:8px;
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      align-items:stretch;
-      margin-top:42px;
-    }
-
-    .about-card,
-    .about-panel{
-      padding:34px;
-      border-radius:30px;
-    }
-
-    .about-card p{
-      color:var(--muted);
-      font-size:1.02rem;
-      max-width:58ch;
-    }
-
-    .about-list{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:14px;
-      margin-top:26px;
-    }
-
-    .about-list div{
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(7,7,59,.04);
-      border:1px solid rgba(7,7,59,.06);
-      font-family:"Montserrat",sans-serif;
-      font-size:.95rem;
-      font-weight:700;
-      color:var(--deep-blue);
-      transition:transform .28s ease, background .28s ease, border-color .28s ease;
-    }
-
-    .about-list div:hover{
-      transform:translateY(-3px);
-      background:rgba(7,7,59,.07);
-      border-color:rgba(7,7,59,.10);
-    }
-
-    .about-panel{
-      display:grid;
-      gap:16px;
-    }
-
-    .about-feature{
-      padding:18px;
-      border-radius:20px;
-      background:rgba(255,255,255,.56);
-      border:1px solid rgba(15,15,17,.05);
-      transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-    }
-
-    .about-feature:hover{
-      transform:translateY(-4px);
-      border-color:rgba(7,7,59,.10);
-      box-shadow:var(--shadow-sm);
-    }
-
-    .about-feature h4{
-      font-family:"Montserrat",sans-serif;
-      margin-bottom:6px;
-      font-size:1rem;
-      color:var(--black);
-    }
-
-    .about-feature p{
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .services-head{
-      margin-bottom:40px;
+    .services-card .section-copy{
+      margin:18px auto 24px;
+      max-width:580px;
     }
 
     .services-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:20px;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:0;
+      margin-top:32px;
+      border-top:1px solid rgba(15,15,17,.06);
     }
 
-    .service-card{
-      position:relative;
-      min-height:270px;
-      padding:28px;
-      border-radius:28px;
-      overflow:hidden;
-      transition:transform .35s var(--ease), border-color .35s ease, background .35s ease, box-shadow .35s ease;
-    }
-
-    .service-card:hover{
-      transform:translateY(-6px);
-      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
-      border-color:rgba(7,7,59,.08);
-      box-shadow:0 18px 34px rgba(15,15,17,.08);
-    }
-
-    .service-card::before{
-      content:"";
-      position:absolute;
-      width:180px;
-      height:180px;
-      border-radius:999px;
-      right:-70px;
-      top:-70px;
-      background:radial-gradient(circle, rgba(7,7,59,.08), transparent 60%);
-      pointer-events:none;
-    }
-
-    .service-icon{
-      width:56px;
-      height:56px;
-      display:grid;
-      place-items:center;
-      border-radius:16px;
-      margin-bottom:18px;
-      background:linear-gradient(180deg, #ffffff, #f4f1ee);
-      border:1px solid rgba(7,7,59,.10);
-      box-shadow:
-        0 6px 14px rgba(15,15,17,.06),
-        inset 0 1px 0 rgba(255,255,255,.85);
-    }
-
-    .service-icon svg{
-      width:24px;
-      height:24px;
-      stroke:var(--deep-blue);
-      stroke-width:1.8;
-      fill:none;
-    }
-
-    .service-card h3{
-      font-family:"Montserrat",sans-serif;
-      font-size:1.16rem;
-      line-height:1.22;
-      margin-bottom:12px;
-      color:var(--black);
-    }
-
-    .service-card p{
-      color:var(--muted);
-      font-size:.97rem;
-      margin-bottom:14px;
-    }
-
-    .service-card ul{
-      list-style:none;
-      display:grid;
-      gap:8px;
-    }
-
-    .service-card li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      color:var(--muted-soft);
-      font-size:.92rem;
-    }
-
-    .service-card li::before{
-      content:"";
-      width:7px;
-      height:7px;
-      border-radius:999px;
-      background:var(--deep-blue);
-      margin-top:.52em;
-      flex:none;
-    }
-
-    .pricing-wrap{
-      margin-top:40px;
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:20px;
-      align-items:stretch;
-    }
-
-    .price-card{
-      position:relative;
-      padding:30px;
-      border-radius:30px;
+    .service-tile{
+      min-height:290px;
+      padding:28px 20px;
       display:flex;
       flex-direction:column;
-      min-height:100%;
-      transition:transform .35s var(--ease), border-color .35s ease, background .35s ease, box-shadow .35s ease;
-      background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.64));
-      border:1px solid rgba(15,15,17,.05);
-      box-shadow:var(--shadow-md);
+      justify-content:flex-end;
+      position:relative;
+      color:#fff;
+      border-right:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
     }
 
-    .price-card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(7,7,59,.10);
-      box-shadow:var(--shadow-lg);
+    .service-tile:last-child{
+      border-right:none;
     }
 
-    .price-card.featured{
-      background:
-        radial-gradient(circle at top right, rgba(7,7,59,.08), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.80));
-      border:1px solid rgba(7,7,59,.12);
-      box-shadow:0 18px 36px rgba(7,7,59,.10);
+    .service-tile::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(15,15,17,.10), rgba(15,15,17,.68));
+      z-index:1;
     }
 
-    .plan-label{
-      display:inline-flex;
-      align-self:flex-start;
-      padding:8px 12px;
-      border-radius:999px;
-      margin-bottom:16px;
-      background:rgba(7,7,59,.06);
-      border:1px solid rgba(7,7,59,.08);
-      color:var(--deep-blue);
+    .service-tile::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-position:center;
+      background-size:cover;
+      transition:transform .7s ease;
+    }
+
+    .service-tile:hover::after{
+      transform:scale(1.06);
+    }
+
+    .service-tile:nth-child(1)::after{
+      background-image:url("https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .service-tile:nth-child(2)::after{
+      background-image:url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .service-tile:nth-child(3)::after{
+      background-image:url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .service-tile:nth-child(4)::after{
+      background-image:url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .service-tile:nth-child(5)::after{
+      background-image:url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .service-tile-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .service-tile small{
+      display:block;
       font-family:"Montserrat",sans-serif;
-      font-size:.76rem;
+      font-size:.7rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:rgba(255,255,255,.76);
+      margin-bottom:10px;
+    }
+
+    .service-tile h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1rem;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      text-transform:uppercase;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .service-tile p{
+      color:rgba(255,255,255,.78);
+      font-size:.92rem;
+      line-height:1.45;
+    }
+
+    .about-section{
+      background:#050507;
+      overflow:hidden;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:40px;
+      align-items:start;
+    }
+
+    .about-copy p{
+      color:rgba(231,227,224,.76);
+      max-width:600px;
+      margin-top:22px;
+      font-size:1.03rem;
+    }
+
+    .about-note{
+      margin-top:22px;
+      max-width:500px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      color:rgba(231,227,224,.62);
+      font-size:.94rem;
+    }
+
+    .logo-row{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:18px;
+      margin-top:42px;
+    }
+
+    .logo-pill{
+      min-height:66px;
+      display:grid;
+      place-items:center;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      color:rgba(255,255,255,.78);
+      font-family:"Montserrat",sans-serif;
+      font-size:.82rem;
       font-weight:700;
       text-transform:uppercase;
       letter-spacing:.12em;
+      background:rgba(255,255,255,.02);
     }
 
-    .price-card h3{
-      font-family:"Montserrat",sans-serif;
-      font-size:1.6rem;
-      margin-bottom:10px;
-      color:var(--black);
-    }
-
-    .price-card p{
-      color:var(--muted);
-      margin-bottom:22px;
-    }
-
-    .price-list{
-      list-style:none;
-      display:grid;
-      gap:12px;
-      margin-bottom:26px;
-      flex:1;
-    }
-
-    .price-list li{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      color:var(--muted-soft);
-      font-size:.96rem;
-    }
-
-    .price-list li::before{
-      content:"✓";
-      font-family:"Montserrat",sans-serif;
-      font-weight:700;
-      color:var(--deep-blue);
-    }
-
-    .portfolio-grid{
-      margin-top:40px;
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:20px;
-    }
-
-    .portfolio-card{
-      position:relative;
-      min-height:360px;
-      padding:20px;
+    .about-side-card{
+      padding:28px;
       border-radius:28px;
-      overflow:hidden;
-      border:1px solid rgba(15,15,17,.06);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.64));
-      transition:transform .35s var(--ease), border-color .35s ease, box-shadow .35s ease;
-      box-shadow:var(--shadow-md);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 40px rgba(0,0,0,.22);
     }
 
-    .portfolio-card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(7,7,59,.10);
-      box-shadow:var(--shadow-lg);
-    }
-
-    .portfolio-image{
-      position:relative;
-      height:100%;
-      min-height:316px;
-      border-radius:22px;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(7,7,59,.10), rgba(15,15,17,.08)),
-        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-      transition:transform .8s ease;
-    }
-
-    .portfolio-card:hover .portfolio-image{
-      transform:scale(1.02);
-    }
-
-    .portfolio-card:nth-child(2) .portfolio-image{
-      background:
-        linear-gradient(180deg, rgba(7,7,59,.10), rgba(15,15,17,.08)),
-        url("https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-    }
-
-    .portfolio-card:nth-child(3) .portfolio-image{
-      background:
-        linear-gradient(180deg, rgba(7,7,59,.10), rgba(15,15,17,.08)),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-    }
-
-    .portfolio-overlay{
-      position:absolute;
-      inset:auto 16px 16px 16px;
-      padding:18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.78);
-      border:1px solid rgba(15,15,17,.06);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      box-shadow:var(--shadow-sm);
-    }
-
-    .portfolio-overlay h3{
+    .about-side-card h3{
       font-family:"Montserrat",sans-serif;
-      font-size:1.04rem;
-      margin-bottom:6px;
-      color:var(--black);
-    }
-
-    .portfolio-overlay p{
-      color:var(--muted);
-      font-size:.92rem;
-    }
-
-    .cta-box{
-      position:relative;
-      overflow:hidden;
-      padding:52px;
-      border-radius:34px;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,.14), transparent 16%),
-        radial-gradient(circle at 82% 18%, rgba(255,255,255,.08), transparent 26%),
-        linear-gradient(135deg, #0F0F11 0%, #101028 55%, #07073B 100%);
-      border:1px solid rgba(7,7,59,.06);
-      box-shadow:0 24px 46px rgba(7,7,59,.16);
-    }
-
-    .cta-box .eyebrow{
-      color:#d7d1cc;
-    }
-
-    .cta-box .eyebrow::before{
-      background:linear-gradient(90deg, #d7d1cc, transparent);
-    }
-
-    .cta-box h2{
-      font-family:"Montserrat",sans-serif;
-      font-size:clamp(2rem, 4vw, 3.2rem);
-      line-height:1.02;
-      letter-spacing:-0.05em;
-      margin-bottom:14px;
-      max-width:760px;
+      font-size:1.1rem;
+      line-height:1.05;
+      text-transform:uppercase;
+      letter-spacing:-0.04em;
+      margin-bottom:18px;
       color:#fff;
     }
 
-    .cta-box p{
-      max-width:640px;
-      color:rgba(231,227,224,.82);
-      margin-bottom:26px;
-      font-size:1.04rem;
+    .about-side-list{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-bottom:22px;
     }
 
-    .cta-box .btn-primary{
-      background:linear-gradient(135deg, #fff, #f2efec);
-      color:var(--deep-blue);
-      box-shadow:0 12px 24px rgba(0,0,0,.18);
+    .about-side-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:rgba(231,227,224,.76);
+      font-size:.95rem;
     }
 
-    .contact-wrap{
-      margin-top:40px;
+    .about-side-list li::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--cream);
+      margin-top:.5em;
+      flex:none;
+    }
+
+    .works-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+      margin-top:36px;
+    }
+
+    .work-card{
+      position:relative;
+      min-height:360px;
+      border-radius:24px;
+      overflow:hidden;
+      background:#17171f;
+      border:1px solid rgba(255,255,255,.06);
+      transition:transform .35s var(--ease), border-color .35s ease;
+    }
+
+    .work-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,255,255,.16);
+    }
+
+    .work-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(15,15,17,.08), rgba(15,15,17,.75));
+      z-index:1;
+    }
+
+    .work-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-position:center;
+      background-size:cover;
+      transition:transform .7s ease;
+    }
+
+    .work-card:hover::after{
+      transform:scale(1.05);
+    }
+
+    .work-card:nth-child(1)::after{
+      background-image:url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=80");
+    }
+
+    .work-card:nth-child(2)::after{
+      background-image:url("https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=1000&q=80");
+    }
+
+    .work-card:nth-child(3)::after{
+      background-image:url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1000&q=80");
+    }
+
+    .work-card:nth-child(4)::after{
+      background-image:url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80");
+    }
+
+    .work-overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      z-index:2;
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .work-overlay small{
+      display:block;
+      color:rgba(255,255,255,.70);
+      font-family:"Montserrat",sans-serif;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .work-overlay h3{
+      font-family:"Montserrat",sans-serif;
+      font-size:1rem;
+      line-height:1.05;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:-0.04em;
+      color:#fff;
+      margin-bottom:6px;
+    }
+
+    .work-overlay p{
+      color:rgba(255,255,255,.76);
+      font-size:.9rem;
+      line-height:1.45;
+    }
+
+    .founders{
+      background:linear-gradient(180deg, #EDE7E1 0%, #E7E3E0 100%);
+      overflow:hidden;
+    }
+
+    .founders-grid{
       display:grid;
       grid-template-columns:.9fr 1.1fr;
+      gap:36px;
+      align-items:center;
+    }
+
+    .founders-copy{
+      max-width:520px;
+    }
+
+    .founders-copy .section-copy{
+      margin-bottom:20px;
+    }
+
+    .founders-points{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .founders-points li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+
+    .founders-points li::before{
+      content:"";
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:var(--deep-blue);
+      margin-top:.46em;
+      flex:none;
+    }
+
+    .signature{
+      margin-top:28px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      font-size:1.3rem;
+      color:var(--brown);
+    }
+
+    .founders-visual{
+      position:relative;
+      min-height:560px;
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(15,15,17,.12)),
+        url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+      box-shadow:var(--shadow-lg);
+    }
+
+    .founders-card{
+      position:absolute;
+      right:24px;
+      bottom:24px;
+      max-width:300px;
+      padding:20px;
+      border-radius:22px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(15,15,17,.08);
+      box-shadow:var(--shadow-md);
+    }
+
+    .founders-card small{
+      display:block;
+      font-family:"Montserrat",sans-serif;
+      font-size:.68rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--deep-blue);
+      margin-bottom:10px;
+    }
+
+    .founders-card p{
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.5;
+    }
+
+    .manifesto{
+      text-align:center;
+      padding:120px 0;
+      background:var(--cream-2);
+      border-top:1px solid rgba(15,15,17,.06);
+      border-bottom:1px solid rgba(15,15,17,.06);
+    }
+
+    .manifesto p{
+      max-width:760px;
+      margin:0 auto 18px;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .manifesto-mark{
+      margin-top:10px;
+      font-family:"Montserrat",sans-serif;
+      font-size:clamp(2.8rem, 7vw, 5.6rem);
+      line-height:.9;
+      font-weight:900;
+      letter-spacing:-0.08em;
+      text-transform:uppercase;
+      color:var(--black);
+    }
+
+    .manifesto-meta{
+      margin-top:14px;
+      font-family:"Montserrat",sans-serif;
+      font-size:.75rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--muted-soft);
+    }
+
+    .contact-section{
+      background:#050507;
+      color:#fff;
+    }
+
+    .contact-head{
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:36px;
+      align-items:start;
+      margin-bottom:28px;
+    }
+
+    .contact-title-wrap h2{
+      color:#fff;
+      font-family:"Montserrat",sans-serif;
+      font-size:clamp(2.4rem, 6vw, 5rem);
+      line-height:.92;
+      font-weight:900;
+      letter-spacing:-0.08em;
+      text-transform:uppercase;
+    }
+
+    .contact-panel{
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
       gap:22px;
+      align-items:start;
     }
 
     .contact-card,
     .form-card{
       padding:30px;
-      border-radius:30px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 40px rgba(0,0,0,.22);
     }
 
     .contact-card h3,
     .form-card h3{
       font-family:"Montserrat",sans-serif;
-      font-size:1.4rem;
+      font-size:1.18rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:-0.04em;
       margin-bottom:12px;
-      color:var(--black);
+      color:#fff;
     }
 
     .contact-card > p,
     .form-card > p{
-      color:var(--muted);
-      margin-bottom:20px;
+      color:rgba(231,227,224,.72);
+      margin-bottom:18px;
     }
 
     .contact-items{
       display:grid;
       gap:14px;
-      margin-top:18px;
+      margin-top:14px;
     }
 
     .contact-item{
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
       padding:16px;
-      border-radius:20px;
-      background:rgba(255,255,255,.56);
-      border:1px solid rgba(15,15,17,.05);
-      transition:transform .28s ease, background .28s ease, border-color .28s ease;
-    }
-
-    .contact-item:hover{
-      transform:translateY(-3px);
-      background:#fff;
-      border-color:rgba(7,7,59,.10);
-    }
-
-    .contact-item svg{
-      width:20px;
-      height:20px;
-      stroke:var(--deep-blue);
-      flex:none;
-      margin-top:2px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .contact-item strong{
       display:block;
-      margin-bottom:3px;
+      margin-bottom:4px;
       font-family:"Montserrat",sans-serif;
-      font-size:.95rem;
-      color:var(--black);
+      font-size:.82rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#fff;
     }
 
     .contact-item span,
     .contact-item a{
-      color:var(--muted);
-      font-size:.95rem;
+      color:rgba(231,227,224,.78);
+      font-size:.98rem;
     }
 
     .form-grid{
@@ -1122,36 +1186,41 @@
       gap:8px;
     }
 
+    .field.full{
+      grid-column:1 / -1;
+    }
+
     .field label{
       font-family:"Montserrat",sans-serif;
-      font-size:.86rem;
-      color:var(--black);
-      font-weight:600;
+      font-size:.8rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#fff;
     }
 
     .field input,
     .field textarea{
       width:100%;
       padding:16px;
-      border:none;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
       outline:none;
-      border-radius:18px;
-      color:var(--black);
-      background:rgba(255,255,255,.74);
-      border:1px solid rgba(15,15,17,.08);
-      transition:border-color .25s ease, background .25s ease, transform .25s ease, box-shadow .25s ease;
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      transition:border-color .25s ease, background .25s ease, box-shadow .25s ease;
     }
 
     .field input::placeholder,
     .field textarea::placeholder{
-      color:#8e867f;
+      color:rgba(231,227,224,.42);
     }
 
     .field input:focus,
     .field textarea:focus{
-      border-color:rgba(7,7,59,.18);
-      background:#fff;
-      box-shadow:0 0 0 4px rgba(7,7,59,.06);
+      border-color:rgba(255,255,255,.24);
+      background:rgba(255,255,255,.08);
+      box-shadow:0 0 0 4px rgba(255,255,255,.04);
     }
 
     .field textarea{
@@ -1159,42 +1228,48 @@
       resize:vertical;
     }
 
-    .field.full{
-      grid-column:1 / -1;
-    }
-
     .form-note{
       margin-top:14px;
-      color:var(--muted);
-      font-size:.9rem;
+      color:rgba(231,227,224,.70);
+      font-size:.92rem;
     }
 
     .footer{
-      padding:40px 0 46px;
-      border-top:1px solid rgba(15,15,17,.06);
-      background:rgba(255,255,255,.40);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
+      background:#111116;
+      color:#fff;
+      padding:34px 0 38px;
+      border-top:1px solid rgba(255,255,255,.08);
     }
 
     .footer-grid{
       display:grid;
-      grid-template-columns:1.1fr .9fr .8fr;
-      gap:24px;
+      grid-template-columns:1.1fr .8fr .8fr;
+      gap:26px;
       align-items:start;
     }
 
-    .footer-brand p{
+    .footer .brand-text strong{
+      color:#fff;
+    }
+
+    .footer .brand-text span{
+      color:rgba(231,227,224,.54);
+    }
+
+    .footer-copy{
       max-width:420px;
-      margin-top:12px;
-      color:var(--muted);
+      margin-top:14px;
+      color:rgba(231,227,224,.66);
     }
 
     .footer h4{
       font-family:"Montserrat",sans-serif;
-      font-size:1rem;
-      margin-bottom:12px;
-      color:var(--black);
+      font-size:.86rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      margin-bottom:14px;
+      color:#fff;
     }
 
     .footer-links,
@@ -1205,46 +1280,78 @@
 
     .footer-links a,
     .footer-socials a{
-      color:var(--muted);
+      color:rgba(231,227,224,.72);
       transition:color .25s ease, transform .25s ease;
     }
 
     .footer-links a:hover,
     .footer-socials a:hover{
-      color:var(--deep-blue);
+      color:#fff;
       transform:translateX(3px);
     }
 
     .footer-bottom{
-      margin-top:28px;
+      margin-top:26px;
       padding-top:16px;
-      border-top:1px solid rgba(15,15,17,.06);
-      color:var(--brown);
-      font-size:.95rem;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(231,227,224,.52);
+      font-size:.92rem;
     }
 
-    @media (max-width:1080px){
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1200;
+      width:58px;
+      height:58px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:#25D366;
+      color:#fff;
+      box-shadow:0 16px 32px rgba(0,0,0,.22);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:translateY(-3px) scale(1.03);
+      box-shadow:0 18px 38px rgba(0,0,0,.28);
+    }
+
+    .whatsapp-float svg{
+      width:28px;
+      height:28px;
+      fill:currentColor;
+    }
+
+    @media (max-width:1120px){
       .hero-grid,
       .about-grid,
-      .contact-wrap,
+      .founders-grid,
+      .contact-head,
+      .contact-panel,
       .footer-grid{
         grid-template-columns:1fr;
       }
 
-      .services-grid,
-      .pricing-wrap,
-      .portfolio-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
+      .services-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
       }
 
-      .hero-visual{
-        max-width:640px;
-        margin-left:0;
+      .works-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+
+      .logo-row{
+        grid-template-columns:repeat(3, minmax(0,1fr));
       }
     }
 
-    @media (max-width:820px){
-      :root{ --nav-h:76px; }
+    @media (max-width:860px){
+      :root{
+        --nav-h:76px;
+      }
 
       .nav-links,
       .nav-cta{
@@ -1258,89 +1365,100 @@
 
       .hero{
         min-height:auto;
-        padding-top:120px;
+        padding-top:118px;
       }
 
-      .hero-stats{
+      .hero-grid{
         grid-template-columns:1fr;
+        align-items:start;
       }
 
-      .hero-visual{
-        max-width:100%;
-        gap:14px;
+      .hero-copy{
+        order:1;
+        padding:0;
       }
 
-      .hero-main-card{
-        padding:22px;
-        border-radius:26px;
+      .hero-media{
+        order:2;
+        min-height:460px;
       }
 
-      .hero-main-card h3{
-        font-size:clamp(1.8rem, 8vw, 2.7rem);
-        max-width:100%;
-      }
-
-      .hero-top-chip{
-        justify-self:start;
-        min-width:auto;
-        width:fit-content;
-      }
-
-      .hero-bottom-card{
-        max-width:100%;
-        margin-top:0;
-      }
-
-      .services-grid,
-      .pricing-wrap,
-      .portfolio-grid,
-      .about-list,
+      .hero-bottom-grid,
       .form-grid{
         grid-template-columns:1fr;
       }
 
-      .cta-box{
-        padding:34px 24px;
+      .services-card{
+        padding:36px 22px;
+      }
+
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+
+      .service-tile{
+        min-height:240px;
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+
+      .service-tile:last-child{
+        border-bottom:none;
+      }
+
+      .works-grid{
+        grid-template-columns:1fr;
+      }
+
+      .logo-row{
+        grid-template-columns:repeat(2, minmax(0,1fr));
       }
     }
 
     @media (max-width:560px){
       .section{
-        padding:84px 0;
+        padding:86px 0;
       }
 
       .hero h1{
-        font-size:clamp(2.3rem, 11vw, 4rem);
-      }
-
-      .hero p{
-        font-size:1rem;
+        font-size:clamp(2.4rem, 13vw, 4.2rem);
       }
 
       .btn{
         width:100%;
       }
 
-      .hero-main-card,
-      .hero-top-chip,
-      .hero-bottom-card{
-        padding:18px;
+      .hero-floating,
+      .founders-card{
+        position:static;
+        max-width:100%;
+        margin:18px;
       }
 
-      .about-card,
-      .about-panel,
+      .hero-media{
+        min-height:380px;
+      }
+
+      .services-showcase{
+        min-height:auto;
+        padding:90px 0;
+      }
+
+      .logo-row{
+        grid-template-columns:1fr;
+      }
+
       .contact-card,
       .form-card,
-      .price-card{
+      .about-side-card{
         padding:24px;
       }
 
-      .portfolio-card{
-        min-height:320px;
-      }
-
-      .portfolio-image{
-        min-height:280px;
+      .whatsapp-float{
+        width:54px;
+        height:54px;
+        right:14px;
+        bottom:14px;
       }
     }
 
@@ -1350,6 +1468,7 @@
         transition:none !important;
         scroll-behavior:auto !important;
       }
+
       .reveal{
         opacity:1 !important;
         transform:none !important;
@@ -1365,20 +1484,20 @@
       <a href="#inicio" class="brand" aria-label="JR Studio inicio">
         <div class="brand-mark">JR</div>
         <div class="brand-text">
-          JR Studio
+          <strong>JR Studio</strong>
           <span>Marketing Digital</span>
         </div>
       </a>
 
       <nav class="nav-links" aria-label="Principal">
-        <a href="#sobre">Sobre</a>
+        <a href="#inicio">Home</a>
+        <a href="#sobre">Nosotros</a>
         <a href="#servicios">Servicios</a>
-        <a href="#planes">Planes</a>
-        <a href="#portfolio">Portfolio</a>
+        <a href="#portfolio">Proyectos</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <a class="nav-cta" href="#contacto">Trabajemos juntos</a>
+      <a class="nav-cta" href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer">WhatsApp</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
@@ -1391,26 +1510,42 @@
   </header>
 
   <div class="mobile-panel" id="mobilePanel">
-    <a href="#sobre">Sobre</a>
+    <a href="#inicio">Home</a>
+    <a href="#sobre">Nosotros</a>
     <a href="#servicios">Servicios</a>
-    <a href="#planes">Planes</a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#portfolio">Proyectos</a>
     <a href="#contacto">Contacto</a>
+    <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer">WhatsApp</a>
   </div>
 
   <main>
     <section class="hero" id="inicio">
       <div class="container">
         <div class="hero-grid">
+          <div class="hero-media reveal">
+            <div class="hero-floating">
+              <small>Creative direction</small>
+              <p>Convertimos ideas en presencia visual, estrategia y una marca que se siente realmente profesional.</p>
+            </div>
+          </div>
+
           <div class="hero-copy reveal">
-            <div class="eyebrow">Agencia creativa & estratégica</div>
+            
             <h1>
-              Tu negocio ya existe,
-              <span class="accent">ahora hagamos que tenga marca</span>
+              Marketing
+              digital &
+              <span class="accent">Estrategia</span>
             </h1>
+
+            <div class="hero-mini-meta">
+              <span>Branding</span>
+              <span>Social Media</span>
+              <span>Web Design</span>
+            </div>
+
             <p>
-              En JR Studio combinamos branding, marketing digital, community management y diseño web
-              para transformar presencia online en una marca sólida, elegante y memorable.
+              En JR Studio ayudamos a negocios y marcas personales a verse mejor, comunicar con intención
+              y crecer con una identidad visual premium, coherente y memorable.
             </p>
 
             <div class="hero-actions">
@@ -1418,385 +1553,253 @@
               <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Contactar</a>
             </div>
 
-            <div class="hero-stats">
-              <div class="stat glass">
+            <div class="hero-bottom-grid">
+              <div class="hero-stat">
                 <strong>Branding</strong>
-                <span>Identidad visual clara, estratégica y coherente.</span>
+                <span>Identidades visuales con dirección y criterio.</span>
               </div>
-              <div class="stat glass">
+              <div class="hero-stat">
                 <strong>Contenido</strong>
-                <span>Calendarios, piezas y copies con intención.</span>
+                <span>Piezas y comunicación alineadas al negocio.</span>
               </div>
-              <div class="stat glass">
-                <strong>Crecimiento</strong>
-                <span>Gestión digital pensada para resultados reales.</span>
+              <div class="hero-stat">
+                <strong>Web</strong>
+                <span>Sitios con estética editorial y foco comercial.</span>
               </div>
-            </div>
-          </div>
-
-          <div class="hero-visual reveal">
-            <div class="hero-top-chip">
-              <div class="badge"><span class="dot"></span> Presencia digital</div>
-              <p>Una estética cuidada comunica valor antes de vender.</p>
-            </div>
-
-            <div class="hero-main-card">
-              <div class="badge"><span class="dot"></span> JR Studio</div>
-              <h3>Diseñamos marcas que se ven tan bien como comunican.</h3>
-
-              <div class="hero-bars">
-                <div class="hero-bar"></div>
-                <div class="hero-bar"></div>
-                <div class="hero-bar"></div>
-                <div class="hero-bar"></div>
-              </div>
-
-              <div class="hero-points">
-                <div class="hero-point">Branding con identidad sólida</div>
-                <div class="hero-point">Contenido alineado a objetivos</div>
-                <div class="hero-point">Sitios web con estética premium</div>
-              </div>
-            </div>
-
-            <div class="hero-bottom-card">
-              <div class="badge"><span class="dot"></span> Estrategia</div>
-              <h4>Más que publicar</h4>
-              <p>Construimos percepción, posicionamiento y confianza de marca.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="sobre">
-      <div class="container">
-        <div class="reveal">
-          <div class="eyebrow">Sobre nosotros</div>
-          <h2 class="section-title">Sobre JR Studio</h2>
-          <p class="section-subtitle">
-            JR Studio acompaña a negocios que necesitan verse mejor, comunicar mejor y crecer con una
-            identidad de marca más profesional. Trabajamos desde la estrategia hasta la ejecución visual
-            para crear una presencia digital consistente y atractiva.
-          </p>
-        </div>
+  
 
+    <section class="services-showcase" id="servicios">
+      <div class="container">
+        <div class="services-card reveal">
+          <div class="eyebrow">Servicios</div>
+          <h2 class="section-title">Nuestro servicios</h2>
+          <p class="section-copy">
+            Potenciamos marcas con ideas creativas y decisiones estratégicas. Nos enfocamos en construir
+            conexiones consistentes entre imagen, comunicación y posicionamiento.
+          </p>
+          <a href="#contacto" class="btn btn-primary">Conocé más</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0;">
+      <div class="services-grid">
+        <article class="service-tile reveal">
+          <div class="service-tile-content">
+            <small>01</small>
+            <h3>Email marketing</h3>
+            <p>Automatizaciones, campañas y comunicación pensada para convertir.</p>
+          </div>
+        </article>
+
+        <article class="service-tile reveal">
+          <div class="service-tile-content">
+            <small>02</small>
+            <h3>Branding</h3>
+            <p>Logo, paleta, tipografías y dirección visual coherente.</p>
+          </div>
+        </article>
+
+        <article class="service-tile reveal">
+          <div class="service-tile-content">
+            <small>03</small>
+            <h3>Social media</h3>
+            <p>Gestión de contenido, estrategia y estética para redes.</p>
+          </div>
+        </article>
+
+        <article class="service-tile reveal">
+          <div class="service-tile-content">
+            <small>04</small>
+            <h3>Web design</h3>
+            <p>Landing pages y sitios con presencia premium y foco comercial.</p>
+          </div>
+        </article>
+
+        <article class="service-tile reveal">
+          <div class="service-tile-content">
+            <small>05</small>
+            <h3>Ads & growth</h3>
+            <p>Campañas en Meta y Google con segmentación y optimización.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-dark about-section" id="sobre">
+      <div class="container">
         <div class="about-grid">
-          <div class="about-card glass reveal">
+          <div class="about-copy reveal">
+            <div class="eyebrow light">About</div>
+            <h2 class="section-title light">Sobre JR Studio</h2>
             <p>
-              Desarrollamos soluciones enfocadas en <strong>marketing digital</strong>,
-              <strong>community management</strong>, <strong>branding</strong> y
-              <strong>web design</strong>, con una estética minimalista, elegante y orientada a elevar
-              la percepción de cada negocio.
+              Diseñamos marcas digitales con una mirada estética fuerte y una base estratégica clara.
+              Nuestro trabajo combina branding, contenido, community management, diseño web y publicidad
+              digital para ayudar a cada negocio a elevar su percepción.
+            </p>
+            <p class="about-note">
+              No se trata solo de publicar o de “tener una web”. Se trata de construir una marca que
+              se vea sólida, profesional y lista para crecer.
             </p>
 
-            <div class="about-list">
-              <div>Marketing digital</div>
-              <div>Community management</div>
-              <div>Branding estratégico</div>
-              <div>Diseño y desarrollo web</div>
-            </div>
+            
           </div>
 
-          <div class="about-panel glass reveal">
-            <div class="about-feature">
-              <h4>Visión de marca</h4>
-              <p>Definimos una imagen coherente para que cada punto de contacto sume valor.</p>
-            </div>
-            <div class="about-feature">
-              <h4>Comunicación estratégica</h4>
-              <p>Convertimos contenidos y redes sociales en herramientas de posicionamiento.</p>
-            </div>
-            <div class="about-feature">
-              <h4>Experiencia visual</h4>
-              <p>Construimos una estética premium, clara y adaptable a todos los dispositivos.</p>
-            </div>
+          <div class="about-side-card reveal">
+            <h3>Qué hacemos mejor</h3>
+            <ul class="about-side-list">
+              <li>Construcción de identidad visual y narrativa de marca.</li>
+              <li>Planificación de contenido con foco en posicionamiento.</li>
+              <li>Diseño de sitios elegantes, claros y adaptados a mobile.</li>
+              <li>Optimización de perfiles, campañas y comunicación digital.</li>
+              <li>Ordenamos la presencia online para que tu negocio transmita valor real.</li>
+            </ul>
+            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Hablemos</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="services-head reveal">
-          <div class="eyebrow">Servicios</div>
-          <h2 class="section-title">Servicios pensados para marcas que quieren crecer</h2>
-          <p class="section-subtitle">
-            Cada servicio está diseñado para fortalecer la presencia digital, mejorar la percepción de marca
-            y generar una comunicación más profesional y efectiva.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card glass reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 19V9"></path>
-                <path d="M10 19V5"></path>
-                <path d="M15 19v-7"></path>
-                <path d="M20 19v-4"></path>
-              </svg>
-            </div>
-            <h3>Branding e identidad de marca</h3>
-            <p>Construimos la base visual y conceptual de tu negocio para que se vea sólido, reconocible y profesional.</p>
-            <ul>
-              <li>Creación y definición visual de la marca</li>
-              <li>Logo, tipografías, colores y estilo</li>
-              <li>Manual de marca</li>
-            </ul>
-          </article>
-
-          <article class="service-card glass reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="14" rx="3"></rect>
-                <path d="M8 20h8"></path>
-                <path d="M12 18v2"></path>
-              </svg>
-            </div>
-            <h3>Diseño y desarrollo web</h3>
-            <p>Sitios visualmente atractivos, funcionales y optimizados para transmitir valor desde el primer vistazo.</p>
-            <ul>
-              <li>Diseño personalizado</li>
-              <li>Experiencia de usuario optimizada</li>
-              <li>Adaptación a dispositivos móviles</li>
-              <li>Integración con redes y contacto</li>
-              <li>Asesoramiento en hosting y puesta online</li>
-            </ul>
-          </article>
-
-          <article class="service-card glass reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 18h16"></path>
-                <path d="M6 15l4-4 3 2 5-6"></path>
-                <path d="M18 9h2v2"></path>
-              </svg>
-            </div>
-            <h3>Estrategia y planificación de contenido</h3>
-            <p>Organizamos ideas, formatos y objetivos para que el contenido tenga intención y continuidad.</p>
-            <ul>
-              <li>Estrategia básica o avanzada de contenido</li>
-              <li>Calendario mensual</li>
-              <li>Planificación por objetivos</li>
-            </ul>
-          </article>
-
-          <article class="service-card glass reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z"></path>
-                <circle cx="12" cy="11" r="2.2"></circle>
-              </svg>
-            </div>
-            <h3>Gestión y crecimiento de redes sociales</h3>
-            <p>Administramos redes con foco en consistencia visual, tono de comunicación y crecimiento sostenido.</p>
-            <ul>
-              <li>Gestión profesional del perfil</li>
-              <li>Publicación y seguimiento</li>
-              <li>Optimización de presencia en Instagram</li>
-            </ul>
-          </article>
-
-          <article class="service-card glass reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="8"></circle>
-                <path d="M4 12h16"></path>
-                <path d="M12 4v16"></path>
-              </svg>
-            </div>
-            <h3>Publicidad digital</h3>
-            <p>Diseñamos campañas para llegar al público correcto y optimizar la inversión en medios pagos.</p>
-            <ul>
-              <li>Meta Ads y Google Ads</li>
-              <li>Segmentación estratégica</li>
-              <li>Optimización de anuncios</li>
-            </ul>
-          </article>
-
-          <article class="service-card glass reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 17l5-5 4 4 7-8"></path>
-                <path d="M20 9v4h-4"></path>
-              </svg>
-            </div>
-            <h3>Análisis de métricas y optimización</h3>
-            <p>Medimos el rendimiento para tomar decisiones más inteligentes y mejorar lo que realmente importa.</p>
-            <ul>
-              <li>Revisión mensual de métricas</li>
-              <li>Detección de oportunidades</li>
-              <li>Ajuste continuo de estrategia</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="planes">
+    <section class="section section-dark" id="portfolio">
       <div class="container">
         <div class="reveal">
-          <div class="eyebrow">Planes mensuales</div>
-          <h2 class="section-title">Packs diseñados para cada etapa de crecimiento</h2>
-          <p class="section-subtitle">
-            Desde una base estratégica hasta una gestión integral con publicidad digital, elegí el pack que mejor se adapte a tu negocio.
+          <div class="eyebrow light">Our works</div>
+          <h2 class="section-title light">Proyectos & áreas de impacto</h2>
+          <p class="section-copy light">
+            Este bloque te sirve para mostrar trabajos, tipos de clientes, casos de branding, sitios web o piezas de contenido.
           </p>
         </div>
 
-        <div class="pricing-wrap">
-          <article class="price-card reveal">
-            <span class="plan-label">Pack 1</span>
-            <h3>Base estratégica</h3>
-            <p>Ideal para negocios que necesitan orden, dirección y una base de contenido clara.</p>
-            <ul class="price-list">
-              <li>Estrategia básica de contenido</li>
-              <li>Calendario de contenidos mensual</li>
-            </ul>
-            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Consultar pack</a>
-          </article>
-
-          <article class="price-card featured reveal">
-            <span class="plan-label">Pack 2</span>
-            <h3>Gestión de marca</h3>
-            <p>Una opción más completa para sostener presencia visual, frecuencia y coherencia en Instagram.</p>
-            <ul class="price-list">
-              <li>Todo lo del Pack 1</li>
-              <li>8 posteos (reels, carrusel o imagen)</li>
-              <li>20 historias</li>
-              <li>Diseño de piezas</li>
-              <li>Redacción de copy</li>
-              <li>Publicación del contenido</li>
-              <li>Optimización del perfil de Instagram</li>
-              <li>Análisis de métricas mensual</li>
-            </ul>
-            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Elegir pack</a>
-          </article>
-
-          <article class="price-card reveal">
-            <span class="plan-label">Pack 3</span>
-            <h3>Crecimiento + Ads</h3>
-            <p>Para marcas que quieren combinar contenido orgánico con campañas publicitarias estratégicas.</p>
-            <ul class="price-list">
-              <li>Todo lo del Pack 2</li>
-              <li>Gestión de campañas publicitarias</li>
-              <li>Publicidad en Instagram y Facebook</li>
-              <li>Segmentación de público</li>
-              <li>Optimización de anuncios</li>
-            </ul>
-            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Consultar pack</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="portfolio">
-      <div class="container">
-        <div class="reveal">
-          <div class="eyebrow">Portfolio / resultados</div>
-          <h2 class="section-title">Algunas áreas donde tu marca puede destacar</h2>
-          <p class="section-subtitle">
-            Este espacio puede reemplazarse luego por proyectos reales, capturas de redes, branding y piezas de contenido creadas por JR Studio.
-          </p>
-        </div>
-
-        <div class="portfolio-grid">
-          <article class="portfolio-card reveal">
-            <div class="portfolio-image">
-              <div class="portfolio-overlay">
-                <h3>Redes sociales gestionadas</h3>
-                <p>Feeds, historias y estrategia visual con identidad consistente.</p>
-              </div>
+        <div class="works-grid">
+          <article class="work-card reveal">
+            <div class="work-overlay">
+              <small>Case 01</small>
+              <h3>Identidad de marca</h3>
+              <p>Desarrollo visual para negocios que necesitan una imagen mucho más profesional.</p>
             </div>
           </article>
 
-          <article class="portfolio-card reveal">
-            <div class="portfolio-image">
-              <div class="portfolio-overlay">
-                <h3>Diseños de contenido</h3>
-                <p>Piezas gráficas, carruseles y contenido pensado para comunicar mejor.</p>
-              </div>
+          <article class="work-card reveal">
+            <div class="work-overlay">
+              <small>Case 02</small>
+              <h3>Contenido estratégico</h3>
+              <p>Diseño de piezas, reels, carruseles e historias con coherencia visual.</p>
             </div>
           </article>
 
-          <article class="portfolio-card reveal">
-            <div class="portfolio-image">
-              <div class="portfolio-overlay">
-                <h3>Branding projects</h3>
-                <p>Identidades de marca con estilo, coherencia y proyección profesional.</p>
-              </div>
+          <article class="work-card reveal">
+            <div class="work-overlay">
+              <small>Case 03</small>
+              <h3>Campañas digitales</h3>
+              <p>Publicidad pensada para atraer al público correcto y optimizar la inversión.</p>
+            </div>
+          </article>
+
+          <article class="work-card reveal">
+            <div class="work-overlay">
+              <small>Case 04</small>
+              <h3>Web premium</h3>
+              <p>Sitios con estética editorial que elevan la percepción desde el primer vistazo.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section founders">
       <div class="container">
-        <div class="cta-box reveal">
-          <div class="eyebrow">Call to action</div>
-          <h2>Transformemos tu negocio en una marca.</h2>
-          <p>
-            Si buscas una presencia digital más estratégica, elegante y profesional, JR Studio puede ayudarte a construirla.
-          </p>
-          <a href="#contacto" class="btn btn-primary">Trabajemos juntos</a>
+        <div class="founders-grid">
+          <div class="founders-copy reveal">
+            <div class="eyebrow">The founders</div>
+            <h2 class="section-title">La visión detrás de la marca</h2>
+            <p class="section-copy">
+              JR Studio nace para ayudar a negocios a dejar de verse improvisados y empezar a sentirse
+              como marcas reales. El enfoque mezcla sensibilidad estética, criterio comercial y una mirada
+              moderna sobre cómo comunicar online.
+            </p>
+
+            <ul class="founders-points">
+              <li>Dirección visual con una estética limpia, premium y actual.</li>
+              <li>Decisiones de contenido conectadas a objetivos concretos.</li>
+              <li>Webs y redes pensadas para transmitir valor y confianza.</li>
+            </ul>
+
+            <div class="signature">JR Studio creative direction</div>
+          </div>
+
+          <div class="founders-visual reveal">
+            <div class="founders-card">
+              <small>Creative studio</small>
+              <p>
+                Diseñamos experiencias digitales para que cada marca se vea tan bien como lo que realmente ofrece.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contacto">
+    <section class="manifesto">
+      <div class="container reveal">
+        <p>A creative innovation lab. Exploring ideas and possibilities.</p>
+        <div class="manifesto-mark">JR Studio</div>
+        <div class="manifesto-meta">Branding · Social media · Diseño web · Comunicación digital</div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contacto">
       <div class="container">
-        <div class="reveal">
-          <div class="eyebrow">Contacto</div>
-          <h2 class="section-title">Hablemos de tu próxima etapa</h2>
-          <p class="section-subtitle">
-            Cuéntanos sobre tu negocio, tus objetivos y el tipo de presencia digital que te gustaría construir.
-          </p>
+        <div class="contact-head">
+          <div class="contact-title-wrap reveal">
+            <div class="eyebrow light">Contacto</div>
+            <h2>Listo para trabajar juntos?</h2>
+          </div>
+
+          <div class="reveal">
+            <p class="section-copy light">
+              Si querés una marca más sólida, una web más potente o una presencia digital mucho más profesional,
+              contanos tu idea y armamos algo a la altura de tu negocio.
+            </p>
+          </div>
         </div>
 
-        <div class="contact-wrap">
-          <div class="contact-card glass reveal">
-            <h3>Información de contacto</h3>
-            <p>Estos datos son editables y puedes reemplazarlos luego por los definitivos.</p>
+        <div class="contact-panel">
+          <div class="contact-card reveal">
+            <h3>Información</h3>
+            <p>Podés escribirnos directamente o completar el formulario.</p>
 
             <div class="contact-items">
               <div class="contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 6h16v12H4z"></path>
-                  <path d="m4 7 8 6 8-6"></path>
-                </svg>
-                <div>
-                  <strong>Email</strong>
-                  <a href="mailto:contacto@jrstudio.com">jrstudio.ar@gmail.com</a>
-                </div>
+                <strong>Email</strong>
+                <a href="mailto:jrstudio.ar@gmail.com">jrstudio.ar@gmail.com</a>
               </div>
 
               <div class="contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3.09a2 2 0 0 1 2 1.72c.12.91.33 1.8.63 2.66a2 2 0 0 1-.45 2.11L8.07 9.93a16 16 0 0 0 6 6l1.44-1.29a2 2 0 0 1 2.11-.45c.86.3 1.75.51 2.66.63A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <div>
-                  <strong>Teléfono</strong>
-                  <span>+54 11 3883-9273</span>
-                </div>
+                <strong>Teléfono</strong>
+                <span>+54 11 3883-9273</span>
               </div>
 
               <div class="contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <path d="M17.5 6.5h.01"></path>
-                </svg>
-                <div>
-                  <strong>Instagram</strong>
-                  <span>@jrstudio</span>
-                </div>
+                <strong>Instagram</strong>
+                <span>@jrstudio</span>
+              </div>
+
+              <div class="contact-item">
+                <strong>WhatsApp</strong>
+                <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer">Ir al chat directo</a>
               </div>
             </div>
           </div>
 
-          <div class="form-card glass reveal">
+          <div class="form-card reveal">
             <h3>Envíanos tu mensaje</h3>
-            <p>Completa el formulario y nos pondremos en contacto contigo.</p>
+            <p>Completá el formulario y nos pondremos en contacto con vos.</p>
 
             <form id="contactForm">
               <div class="form-grid">
@@ -1817,12 +1820,12 @@
 
                 <div class="field full">
                   <label for="mensaje">Mensaje</label>
-                  <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..." required></textarea>
+                  <textarea id="mensaje" name="mensaje" placeholder="Contanos qué necesitás..." required></textarea>
                 </div>
               </div>
 
               <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-              <p class="form-note" id="formMessage">Completa el formulario para enviarnos tu consulta.</p>
+              <p class="form-note" id="formMessage">Completá el formulario para enviarnos tu consulta.</p>
             </form>
           </div>
         </div>
@@ -1833,26 +1836,26 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
+        <div>
           <a href="#inicio" class="brand" aria-label="JR Studio">
             <div class="brand-mark">JR</div>
             <div class="brand-text">
-              JR Studio
+              <strong>JR Studio</strong>
               <span>Marketing Digital</span>
             </div>
           </a>
-          <p>
-            Branding, community management, marketing digital y diseño web con una estética minimalista, estratégica y profesional.
+          <p class="footer-copy">
+            Branding, community management, marketing digital y diseño web con una estética estratégica, moderna y profesional.
           </p>
         </div>
 
         <div>
-          <h4>Navegación</h4>
+          <h4>Mapa del sitio</h4>
           <div class="footer-links">
-            <a href="#sobre">Sobre nosotros</a>
+            <a href="#inicio">Home</a>
+            <a href="#sobre">Nosotros</a>
             <a href="#servicios">Servicios</a>
-            <a href="#planes">Planes</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">Proyectos</a>
             <a href="#contacto">Contacto</a>
           </div>
         </div>
@@ -1860,23 +1863,36 @@
         <div>
           <h4>Redes</h4>
           <div class="footer-socials">
-            <a href="#" aria-label="Instagram">Instagram</a>
-            <a href="#" aria-label="Behance">Behance</a>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://w.app/vapnl9" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="#">Instagram</a>
+            <a href="#">Behance</a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        © 2026 JR Studio – Marketing Digital
+        © 2026 JR Studio — Marketing Digital
       </div>
     </div>
   </footer>
+
+  <a
+    class="whatsapp-float"
+    href="https://w.app/vapnl9"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Abrir WhatsApp"
+  >
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.39c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.84 1.05-.15.18-.31.2-.58.07-.27-.14-1.13-.42-2.15-1.35-.79-.7-1.32-1.57-1.47-1.84-.15-.27-.02-.41.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.14-.6-1.45-.82-1.98-.22-.53-.44-.45-.6-.46h-.51c-.18 0-.47.07-.71.34-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.88 2.87 4.56 4.02.64.28 1.14.44 1.53.56.64.2 1.22.17 1.68.1.51-.08 1.58-.65 1.8-1.28.22-.63.22-1.17.15-1.28-.07-.11-.25-.18-.52-.31zM16.03 4.5c-6.33 0-11.46 5.13-11.46 11.46 0 2.02.53 3.99 1.53 5.72L4.5 27.5l5.97-1.56a11.4 11.4 0 0 0 5.56 1.44h.01c6.33 0 11.46-5.13 11.46-11.46S22.36 4.5 16.03 4.5zm0 20.9h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.55.93.95-3.46-.22-.36a9.44 9.44 0 1 1 7.97 4.4z"/>
+    </svg>
+  </a>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
       const navbar = document.getElementById("navbar");
       const menuToggle = document.getElementById("menuToggle");
       const mobilePanel = document.getElementById("mobilePanel");
@@ -1892,18 +1908,24 @@
         }
       }
 
+      function closeMobileMenu() {
+        mobilePanel.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        body.classList.remove("menu-open");
+      }
+
       handleNavbar();
       window.addEventListener("scroll", handleNavbar);
 
       menuToggle.addEventListener("click", () => {
         const isOpen = mobilePanel.classList.toggle("open");
         menuToggle.setAttribute("aria-expanded", String(isOpen));
+        body.classList.toggle("menu-open", isOpen);
       });
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
-          mobilePanel.classList.remove("open");
-          menuToggle.setAttribute("aria-expanded", "false");
+          closeMobileMenu();
         });
       });
 
@@ -1912,8 +1934,7 @@
         const clickedToggle = menuToggle.contains(event.target);
 
         if (!clickedInsideMenu && !clickedToggle) {
-          mobilePanel.classList.remove("open");
-          menuToggle.setAttribute("aria-expanded", "false");
+          closeMobileMenu();
         }
       });
 
@@ -1944,25 +1965,25 @@
         };
 
         if (!params.nombre || !params.email || !params.mensaje) {
-          formMessage.textContent = "Por favor completa los campos obligatorios.";
-          formMessage.style.color = "#c44b4b";
+          formMessage.textContent = "Por favor completá los campos obligatorios.";
+          formMessage.style.color = "#ff8f8f";
           return;
         }
 
         submitButton.disabled = true;
         submitButton.textContent = "Enviando...";
         formMessage.textContent = "Enviando mensaje...";
-        formMessage.style.color = "#07073B";
+        formMessage.style.color = "#E7E3E0";
 
         try {
           await emailjs.send("service_jrstudio", "template_s1abe0b", params);
           formMessage.textContent = "✅ Mensaje enviado correctamente";
-          formMessage.style.color = "#1f7a1f";
+          formMessage.style.color = "#9FE3A8";
           form.reset();
         } catch (error) {
           console.error("Error EmailJS:", error);
-          formMessage.textContent = "❌ Error al enviar el mensaje. Revisa la consola.";
-          formMessage.style.color = "#c44b4b";
+          formMessage.textContent = "❌ Error al enviar el mensaje. Revisá la consola.";
+          formMessage.style.color = "#ff8f8f";
         } finally {
           submitButton.disabled = false;
           submitButton.textContent = "Enviar mensaje";
@@ -1970,7 +1991,5 @@
       });
     });
   </script>
-</body>
-</html>
 </body>
 </html>
